@@ -1,0 +1,1570 @@
+{
+  "aphids": {
+    "common_name": "Aphids",
+    "scientific_name": "Aphididae (e.g. Aphis gossypii, Aphis craccivora)",
+    "organism_type": "Insect (sap-sucking)",
+    "order": "Hemiptera: Aphididae",
+    "crops": [
+      "Cowpea",
+      "Okra",
+      "Pepper",
+      "Cabbage",
+      "Groundnut",
+      "Cotton"
+    ],
+    "severity": "moderate",
+    "description": "Small soft-bodied insects that cluster on young shoots and the underside of leaves, sucking sap and spreading plant viruses.",
+    "identification": [
+      "Pear-shaped insects 1-3 mm long, green, black or grey",
+      "Two small tube-like 'cornicles' at the rear",
+      "Dense colonies, often tended by ants"
+    ],
+    "symptoms": [
+      "Curled, crinkled or yellowing leaves",
+      "Sticky honeydew on leaves",
+      "Black sooty mould growing on honeydew",
+      "Stunted shoots and distorted pods"
+    ],
+    "lifecycle": "Females give birth to live young without mating; a new generation every 7-10 days in warm weather. Winged forms appear when colonies get crowded.",
+    "management": {
+      "cultural": [
+        "Remove heavily infested shoots",
+        "Avoid excessive nitrogen fertiliser",
+        "Control weeds that host aphids",
+        "Wash colonies off with a strong water spray"
+      ],
+      "biological": [
+        "Conserve ladybird beetles, lacewings and hoverflies",
+        "Neem oil or mild soap solution sprays",
+        "Yellow sticky traps to monitor winged aphids"
+      ],
+      "chemical": [
+        "Treat only when colonies are spreading and natural enemies are few",
+        "Use registered products and target the underside of leaves",
+        "Avoid broad-spectrum sprays that kill beneficial insects"
+      ]
+    },
+    "products": [
+      "yellow-sticky-traps",
+      "neem-oil",
+      "knapsack-sprayer"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Hemiptera › Aphididae",
+    "edibility": {
+      "status": "caution",
+      "reason": "Aphids and their sticky honeydew sit on the surface; they are not poisonous.",
+      "advice": [
+        "Wash leaves and pods well in clean water",
+        "Discard badly curled or mouldy parts"
+      ]
+    }
+  },
+  "aspergillus_mould": {
+    "common_name": "Aflatoxin Mould (Aspergillus Ear / Kernel Rot)",
+    "scientific_name": "Aspergillus flavus",
+    "organism_type": "Fungus (produces aflatoxin)",
+    "order": "Eurotiales: Aspergillaceae",
+    "crops": [
+      "Maize",
+      "Groundnut",
+      "Sorghum",
+      "Stored grain"
+    ],
+    "severity": "high",
+    "description": "A mould that grows on maize and groundnuts in the field and in storage and produces aflatoxin, a poison that causes liver damage and cancer. Aflatoxin is not destroyed by cooking.",
+    "identification": [
+      "Olive-green to yellow-green powdery mould on kernels or nuts",
+      "Often on insect-damaged or cracked grain",
+      "Musty smell"
+    ],
+    "symptoms": [
+      "Green-yellow mould on cobs, kernels or nuts",
+      "Discoloured, shrivelled kernels",
+      "Mould in storage bags"
+    ],
+    "lifecycle": "Lives in soil and crop residue; infects through insect damage and drought stress; grows fast in grain stored damp (above about 13% moisture).",
+    "management": {
+      "cultural": [
+        "Harvest on time and dry grain quickly to below 13% moisture",
+        "Sort out mouldy, damaged and discoloured kernels or nuts",
+        "Store in clean, dry, hermetic bags off the floor",
+        "Control field insects that damage cobs"
+      ],
+      "biological": [
+        "Aflasafe biocontrol product applied in the field where available"
+      ],
+      "chemical": [
+        "No spray makes contaminated grain safe"
+      ]
+    },
+    "products": [
+      "hermetic-bags",
+      "moisture-meter"
+    ],
+    "category": "disease",
+    "kingdom": "Fungi",
+    "group": "Fungus",
+    "taxonomy": "Fungi › Ascomycota › Eurotiales › Aspergillaceae",
+    "edibility": {
+      "status": "unsafe",
+      "reason": "This mould can produce aflatoxin, a poison that damages the liver and causes cancer. Cooking does not destroy it.",
+      "advice": [
+        "Do NOT eat mouldy kernels or nuts, and do not feed them to animals",
+        "Do not wash or sort mouldy grain to sell or eat; destroy it",
+        "Test stored grain if mould is found in a batch"
+      ]
+    }
+  },
+  "cassava_bacterial_blight": {
+    "common_name": "Cassava Bacterial Blight",
+    "scientific_name": "Xanthomonas phaseoli pv. manihotis",
+    "organism_type": "Bacterium",
+    "order": "Xanthomonadales: Xanthomonadaceae",
+    "crops": [
+      "Cassava"
+    ],
+    "severity": "moderate",
+    "description": "A bacterial disease spread by infected cuttings, rain splash and tools. Most severe in the rainy season.",
+    "identification": [
+      "Angular, water-soaked leaf spots",
+      "Wilting of leaves and shoot tips",
+      "Sticky gum oozing from stems"
+    ],
+    "symptoms": [
+      "Angular leaf spots that turn brown",
+      "Leaf wilting and blight",
+      "Shoot dieback ('candlestick')"
+    ],
+    "lifecycle": "Survives in infected stems and debris; spreads by rain splash, insects, contaminated tools and cuttings.",
+    "management": {
+      "cultural": [
+        "Use clean cuttings from healthy plants",
+        "Rotate crops and destroy infected debris",
+        "Disinfect cutting tools between plants"
+      ],
+      "biological": [
+        "Plant tolerant varieties"
+      ],
+      "chemical": [
+        "No effective field chemical control"
+      ]
+    },
+    "products": [
+      "hand-lens"
+    ],
+    "category": "disease",
+    "kingdom": "Bacteria",
+    "group": "Bacterium",
+    "taxonomy": "Bacteria › Pseudomonadota › Gammaproteobacteria › Xanthomonadales › Xanthomonadaceae",
+    "edibility": {
+      "status": "caution",
+      "reason": "The bacterium attacks leaves and stems; roots are usually fine but can rot on badly affected plants.",
+      "advice": [
+        "Use firm, white roots only; discard rotten or discoloured roots",
+        "Process cassava as usual"
+      ]
+    }
+  },
+  "cassava_green_mite": {
+    "common_name": "Cassava Green Mite",
+    "scientific_name": "Mononychellus tanajoa",
+    "organism_type": "Mite (arachnid)",
+    "order": "Acari: Tetranychidae",
+    "crops": [
+      "Cassava"
+    ],
+    "severity": "moderate",
+    "description": "A tiny green mite that feeds on young cassava leaves, especially in the dry season, and can reduce root yield considerably.",
+    "identification": [
+      "Very small green mites (under 1 mm), best seen with a hand lens",
+      "Found on the underside of young leaves near the shoot tip"
+    ],
+    "symptoms": [
+      "Yellow chlorotic spots giving a mottled look",
+      "Small, deformed young leaves",
+      "'Candlestick' appearance when top leaves drop off"
+    ],
+    "lifecycle": "Egg → larva → two nymph stages → adult in about 1-2 weeks. Numbers rise rapidly in hot dry weather.",
+    "management": {
+      "cultural": [
+        "Use tolerant varieties with hairy leaves",
+        "Plant early in the rainy season",
+        "Avoid moving infested planting material"
+      ],
+      "biological": [
+        "Conserve the predatory mite Typhlodromalus aripo, which lives in the shoot tip"
+      ],
+      "chemical": [
+        "Acaricides are rarely recommended for cassava; biological control is preferred"
+      ]
+    },
+    "products": [
+      "hand-lens",
+      "neem-oil"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Mite",
+    "taxonomy": "Animalia › Arthropoda › Arachnida › Acari › Trombidiformes › Tetranychidae",
+    "edibility": {
+      "status": "safe",
+      "reason": "Mites feed on leaves only; roots are not affected in quality.",
+      "advice": [
+        "Peel and process cassava as usual",
+        "Wash cassava leaves well if eating them"
+      ]
+    }
+  },
+  "cassava_mealybug": {
+    "common_name": "Cassava Mealybug",
+    "scientific_name": "Phenacoccus manihoti",
+    "organism_type": "Insect (sap-sucking)",
+    "order": "Hemiptera: Pseudococcidae",
+    "crops": [
+      "Cassava"
+    ],
+    "severity": "high",
+    "description": "A pink, waxy mealybug that attacks cassava shoot tips during the dry season. It was brought under control in Africa by the parasitic wasp Anagyrus lopezi, one of the most successful biological control programmes ever.",
+    "identification": [
+      "Pinkish oval insects covered in white powdery wax",
+      "Clusters at shoot tips and under leaves",
+      "White cottony egg sacs"
+    ],
+    "symptoms": [
+      "'Bunchy top': shortened internodes and crowded leaves at the tip",
+      "Leaf curling and yellowing",
+      "Stem distortion and dieback",
+      "Reduced root yield"
+    ],
+    "lifecycle": "Reproduces without males; each female lays several hundred eggs. Populations explode in the dry season and crash with heavy rains.",
+    "management": {
+      "cultural": [
+        "Plant clean, mealybug-free stem cuttings",
+        "Plant early in the rainy season so plants are strong by the dry season",
+        "Remove and burn heavily infested tips"
+      ],
+      "biological": [
+        "Conserve the parasitoid Anagyrus lopezi and ladybird predators",
+        "Avoid broad-spectrum insecticides that kill these natural enemies"
+      ],
+      "chemical": [
+        "Dip cuttings in a registered treatment before planting if infestation is known",
+        "Field spraying is rarely economic; rely on biological control"
+      ]
+    },
+    "products": [
+      "hand-lens",
+      "neem-oil"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Hemiptera › Pseudococcidae",
+    "edibility": {
+      "status": "safe",
+      "reason": "Mealybugs damage shoots and reduce yield; the roots stay safe to eat.",
+      "advice": [
+        "Peel and process cassava as usual (soaking, fermenting or cooking) as with any cassava"
+      ]
+    }
+  },
+  "cassava_mosaic_disease": {
+    "common_name": "Cassava Mosaic Disease",
+    "scientific_name": "Cassava mosaic begomoviruses (ACMV, EACMV)",
+    "organism_type": "Virus (spread by whitefly and cuttings)",
+    "order": "Geminiviridae",
+    "crops": [
+      "Cassava"
+    ],
+    "severity": "high",
+    "description": "The most damaging cassava disease in Africa. It spreads through infected stem cuttings and by whiteflies, and can cut root yield by more than half.",
+    "identification": [
+      "Yellow and green mosaic pattern on leaves",
+      "Leaves twisted, puckered or reduced in size",
+      "Symptoms on all leaves of plants grown from infected cuttings"
+    ],
+    "symptoms": [
+      "Mosaic yellowing of leaves",
+      "Leaf distortion and curling",
+      "Stunted plants and fewer, smaller roots"
+    ],
+    "lifecycle": "Carried in stem cuttings from infected plants and by Bemisia tabaci whiteflies feeding on healthy plants.",
+    "management": {
+      "cultural": [
+        "Plant resistant varieties and clean cuttings from healthy plants",
+        "Remove and destroy infected plants early (roguing)",
+        "Do not take cuttings from diseased fields"
+      ],
+      "biological": [
+        "Manage whitefly populations; conserve their natural enemies"
+      ],
+      "chemical": [
+        "No chemical cure for the virus"
+      ]
+    },
+    "products": [
+      "yellow-sticky-traps",
+      "insect-net"
+    ],
+    "category": "disease",
+    "kingdom": "Virus (non-cellular)",
+    "group": "Virus",
+    "taxonomy": "Virus › Geminiviridae › Begomovirus",
+    "edibility": {
+      "status": "safe",
+      "reason": "Plant viruses do not infect people. Roots may be fewer and smaller but are safe.",
+      "advice": [
+        "Peel and process cassava as usual (soaking, fermenting or cooking)"
+      ]
+    }
+  },
+  "cocoa_black_pod": {
+    "common_name": "Cocoa Black Pod",
+    "scientific_name": "Phytophthora megakarya, P. palmivora",
+    "organism_type": "Oomycete (water mould)",
+    "order": "Peronosporales: Peronosporaceae",
+    "crops": [
+      "Cocoa"
+    ],
+    "severity": "high",
+    "description": "The most serious cocoa disease in Ghana, especially in wet months. Pods turn brown-black and the beans inside rot.",
+    "identification": [
+      "Small brown spot on the pod that spreads quickly",
+      "Whole pod turns chocolate-brown to black",
+      "White fungal-like growth on the pod surface"
+    ],
+    "symptoms": [
+      "Brown-black pods",
+      "Rotten beans inside infected pods",
+      "Pods may mummify on the tree"
+    ],
+    "lifecycle": "Survives in soil and on infected pods; spread by rain splash, ants and contaminated tools during the rainy season.",
+    "management": {
+      "cultural": [
+        "Remove and bury infected pods weekly",
+        "Harvest ripe pods frequently",
+        "Prune for air flow and reduce shade",
+        "Improve drainage"
+      ],
+      "biological": [
+        "Keep the farm clean of infected husks"
+      ],
+      "chemical": [
+        "Follow the COCOBOD / CRIG spraying calendar with approved fungicides"
+      ]
+    },
+    "products": [
+      "knapsack-sprayer",
+      "ppe-kit"
+    ],
+    "category": "disease",
+    "kingdom": "Chromista / Stramenopila",
+    "group": "Oomycete",
+    "taxonomy": "Stramenopila › Oomycota › Peronosporales › Peronosporaceae",
+    "edibility": {
+      "status": "unsafe",
+      "reason": "Beans inside black pods rot and must not be used for food.",
+      "advice": [
+        "Do not use beans from black or rotting pods",
+        "Beans from healthy pods are fine"
+      ]
+    }
+  },
+  "cocoa_mirid": {
+    "common_name": "Cocoa Mirid (Capsid)",
+    "scientific_name": "Sahlbergella singularis, Distantiella theobroma",
+    "organism_type": "Insect (sap-sucking bug)",
+    "order": "Hemiptera: Miridae",
+    "crops": [
+      "Cocoa"
+    ],
+    "severity": "high",
+    "description": "The most important insect pest of cocoa in Ghana. Mirids pierce pods and young shoots, and the wounds are then invaded by fungi.",
+    "identification": [
+      "Reddish-brown to dark bugs about 10 mm long with long antennae",
+      "Nymphs are smaller and wingless",
+      "Mostly active at night and hide during the day"
+    ],
+    "symptoms": [
+      "Dark, oval, sunken lesions on pods",
+      "Blackened lesions on shoots that lead to dieback ('mirid blast')",
+      "Stag-headed canopy after repeated attacks"
+    ],
+    "lifecycle": "Eggs inserted into pod husks or stems → five nymph stages → adult; about 4-6 weeks. Populations peak from August to December.",
+    "management": {
+      "cultural": [
+        "Keep a uniform canopy and fill gaps; mirids favour sunny pockets",
+        "Prune and remove mistletoe and chupons",
+        "Regular inspection of pods and young shoots"
+      ],
+      "biological": [
+        "Conserve ants such as Oecophylla (weaver ants) which prey on mirids"
+      ],
+      "chemical": [
+        "Follow the COCOBOD / CRIG recommended spraying calendar and approved insecticides",
+        "Spray mainly August to December when populations peak"
+      ]
+    },
+    "products": [
+      "knapsack-sprayer",
+      "ppe-kit",
+      "hand-lens"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Hemiptera › Miridae",
+    "edibility": {
+      "status": "caution",
+      "reason": "Lesions on pods can let in fungi that rot the beans.",
+      "advice": [
+        "Use beans only from sound pods",
+        "Discard pods with black, rotten or mouldy beans"
+      ]
+    }
+  },
+  "diamondback_moth": {
+    "common_name": "Diamondback Moth",
+    "scientific_name": "Plutella xylostella",
+    "organism_type": "Insect (moth larva)",
+    "order": "Lepidoptera: Plutellidae",
+    "crops": [
+      "Cabbage",
+      "Kale",
+      "Cauliflower",
+      "Other brassicas"
+    ],
+    "severity": "high",
+    "description": "The most destructive pest of cabbage worldwide, including in Ghana's vegetable-growing areas. It is notorious for insecticide resistance.",
+    "identification": [
+      "Small green larvae up to 12 mm that wriggle backwards when touched",
+      "Larvae hang from a silk thread when disturbed",
+      "Adult moth has a row of diamond shapes along its back"
+    ],
+    "symptoms": [
+      "Small 'windowpane' holes where larvae eat one leaf surface",
+      "Many small holes in leaves",
+      "Damage to the growing point and heads"
+    ],
+    "lifecycle": "Egg → four larval instars (about 10-14 days) → pupa in a loose silk cocoon on the leaf → adult. Around 3 weeks per generation.",
+    "management": {
+      "cultural": [
+        "Crop rotation and removal of brassica residues",
+        "Overhead irrigation disrupts egg laying",
+        "Use healthy transplants from netted nurseries"
+      ],
+      "biological": [
+        "Bt biopesticides are very effective",
+        "Neem sprays",
+        "Conserve parasitoid wasps (Cotesia, Diadegma)"
+      ],
+      "chemical": [
+        "Resistance is widespread; rotate modes of action strictly and use only registered products"
+      ]
+    },
+    "products": [
+      "bt-biopesticide",
+      "neem-oil",
+      "insect-net"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Lepidoptera › Plutellidae",
+    "edibility": {
+      "status": "caution",
+      "reason": "Larvae and droppings get between cabbage leaves.",
+      "advice": [
+        "Remove outer leaves, larvae and droppings",
+        "Wash thoroughly; discard heavily eaten or rotting heads"
+      ]
+    }
+  },
+  "fall_armyworm": {
+    "common_name": "Fall Armyworm",
+    "scientific_name": "Spodoptera frugiperda",
+    "organism_type": "Insect (moth larva / caterpillar)",
+    "order": "Lepidoptera: Noctuidae",
+    "crops": [
+      "Maize",
+      "Sorghum",
+      "Rice",
+      "Millet",
+      "Vegetables"
+    ],
+    "severity": "high",
+    "description": "An invasive caterpillar that arrived in West Africa in 2016 and is now one of the most damaging pests of maize in Ghana. Larvae feed inside the whorl and can destroy young plants.",
+    "identification": [
+      "Inverted pale 'Y' mark on the head of the larva",
+      "Four dark spots forming a square on the second-to-last body segment",
+      "Moist sawdust-like frass (droppings) in the whorl"
+    ],
+    "symptoms": [
+      "Small 'windowpane' patches on young leaves",
+      "Ragged holes and torn leaves in the whorl",
+      "Frass in the funnel of the plant",
+      "Damaged tassels and cobs in heavy attacks"
+    ],
+    "lifecycle": "Egg (2-3 days) → Larva, 6 instars (14-22 days) → Pupa in soil (8-9 days) → Adult moth. Several generations per season; moths fly long distances.",
+    "management": {
+      "cultural": [
+        "Scout fields twice a week from emergence, checking 20 plants in a W pattern",
+        "Plant early and at the same time as neighbours",
+        "Hand-pick egg masses and young larvae",
+        "Intercrop maize with legumes; push-pull with Desmodium and Brachiaria"
+      ],
+      "biological": [
+        "Bacillus thuringiensis (Bt) and Spodoptera NPV biopesticides on young larvae",
+        "Neem-based sprays into the whorl",
+        "Conserve natural enemies such as earwigs, ants and parasitic wasps"
+      ],
+      "chemical": [
+        "Only when scouting shows more than about 20% of young plants damaged",
+        "Use products registered by Ghana EPA for fall armyworm and follow the label",
+        "Spray into the whorl early morning or late evening when larvae are active",
+        "Rotate modes of action to delay resistance"
+      ]
+    },
+    "products": [
+      "pheromone-trap-faw",
+      "bt-biopesticide",
+      "neem-oil",
+      "knapsack-sprayer"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Lepidoptera › Noctuidae",
+    "edibility": {
+      "status": "caution",
+      "reason": "Larvae chew leaves and cobs; damaged cobs can then grow harmful moulds.",
+      "advice": [
+        "Remove larvae, frass and damaged kernels before eating",
+        "Throw away cobs that show any green or pink mould"
+      ]
+    }
+  },
+  "grasshopper": {
+    "common_name": "Variegated Grasshopper",
+    "scientific_name": "Zonocerus variegatus",
+    "organism_type": "Insect (chewing)",
+    "order": "Orthoptera: Pyrgomorphidae",
+    "crops": [
+      "Cassava",
+      "Maize",
+      "Vegetables",
+      "Cocoa seedlings",
+      "Citrus"
+    ],
+    "severity": "moderate",
+    "description": "A brightly coloured grasshopper that feeds on many crops and can strip cassava plants of leaves in the dry season.",
+    "identification": [
+      "Black, yellow, orange and green markings",
+      "Nymphs cluster in groups on vegetation",
+      "Slow-moving; gives off an unpleasant smell when handled"
+    ],
+    "symptoms": [
+      "Leaves eaten from the edges inward",
+      "Complete defoliation in heavy attacks",
+      "Bark stripped from young stems"
+    ],
+    "lifecycle": "Eggs laid in soil pods (egg-laying sites are reused yearly) → nymphs hatch at the start of the dry season → adults after several moults. One generation per year.",
+    "management": {
+      "cultural": [
+        "Locate and dig up egg-laying sites in the rainy season",
+        "Destroy nymph clusters early in the morning",
+        "Clear bush fallow around fields"
+      ],
+      "biological": [
+        "Metarhizium acridum fungal biopesticide (Green Muscle)",
+        "Conserve birds and other predators"
+      ],
+      "chemical": [
+        "Spot-treat nymph bands with registered products instead of whole fields"
+      ]
+    },
+    "products": [
+      "insect-net",
+      "knapsack-sprayer"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Orthoptera › Pyrgomorphidae",
+    "edibility": {
+      "status": "safe",
+      "reason": "Grasshoppers eat leaves; remaining produce is not made harmful.",
+      "advice": [
+        "Wash produce before eating",
+        "Discard badly chewed parts"
+      ]
+    }
+  },
+  "maize_gray_leaf_spot": {
+    "common_name": "Maize Grey Leaf Spot",
+    "scientific_name": "Cercospora zeae-maydis",
+    "organism_type": "Fungus",
+    "order": "Mycosphaerellales: Mycosphaerellaceae",
+    "crops": [
+      "Maize"
+    ],
+    "severity": "moderate",
+    "description": "A fungal leaf disease favoured by warm, humid weather and continuous maize. Severe infections kill leaves before the grain fills.",
+    "identification": [
+      "Rectangular grey to tan lesions bounded by leaf veins",
+      "Lesions run parallel to the veins",
+      "Starts on lower leaves"
+    ],
+    "symptoms": [
+      "Narrow rectangular leaf lesions",
+      "Lesions merge and blight whole leaves",
+      "Weak stalks and lighter cobs"
+    ],
+    "lifecycle": "Survives on maize residue left on the surface; spores spread by wind and rain splash in humid weather.",
+    "management": {
+      "cultural": [
+        "Rotate away from maize for a season",
+        "Bury or remove maize residue",
+        "Plant tolerant varieties"
+      ],
+      "biological": [
+        "Balanced fertiliser for vigorous plants"
+      ],
+      "chemical": [
+        "Registered fungicide at early tasselling only for severe risk"
+      ]
+    },
+    "products": [
+      "hand-lens"
+    ],
+    "category": "disease",
+    "kingdom": "Fungi",
+    "group": "Fungus",
+    "taxonomy": "Fungi › Ascomycota › Dothideomycetes › Mycosphaerellales › Mycosphaerellaceae",
+    "edibility": {
+      "status": "safe",
+      "reason": "The fungus attacks leaves; the grain is safe to eat.",
+      "advice": [
+        "Check cobs at harvest and discard any mouldy ones",
+        "Dry grain well before storage"
+      ]
+    }
+  },
+  "maize_leaf_blight": {
+    "common_name": "Maize Leaf Blight (Northern)",
+    "scientific_name": "Exserohilum turcicum",
+    "organism_type": "Fungus",
+    "order": "Pleosporales: Pleosporaceae",
+    "crops": [
+      "Maize",
+      "Sorghum"
+    ],
+    "severity": "moderate",
+    "description": "A fungal leaf disease favoured by cool, humid weather. Large lesions reduce the leaf area that feeds the cob, lowering yield when it strikes before tasselling.",
+    "identification": [
+      "Long cigar-shaped grey-green to tan lesions, 2-15 cm",
+      "Lesions start on lower leaves and move upward",
+      "Dark grey spore growth on lesions in humid weather"
+    ],
+    "symptoms": [
+      "Elliptical tan lesions on leaves",
+      "Lesions join and kill whole leaves",
+      "Early drying of the plant and smaller cobs"
+    ],
+    "lifecycle": "Survives in infected crop residue. Spores are spread by wind and rain splash to new leaves; infection needs 6-18 hours of leaf wetness.",
+    "management": {
+      "cultural": [
+        "Plant resistant or tolerant varieties",
+        "Rotate maize with legumes",
+        "Bury or remove infected residue after harvest",
+        "Avoid very dense planting"
+      ],
+      "biological": [
+        "Keep plants vigorous with balanced fertiliser"
+      ],
+      "chemical": [
+        "Fungicide only on high-value or seed crops when lesions appear before tasselling, using registered products"
+      ]
+    },
+    "products": [
+      "hand-lens"
+    ],
+    "category": "disease",
+    "kingdom": "Fungi",
+    "group": "Fungus",
+    "taxonomy": "Fungi › Ascomycota › Dothideomycetes › Pleosporales › Pleosporaceae",
+    "edibility": {
+      "status": "safe",
+      "reason": "The fungus attacks leaves, not the grain. Yield may drop but grain is safe.",
+      "advice": [
+        "Check cobs at harvest and discard any mouldy ones",
+        "Dry grain well before storage"
+      ]
+    }
+  },
+  "maize_rust": {
+    "common_name": "Maize Common Rust",
+    "scientific_name": "Puccinia sorghi",
+    "organism_type": "Fungus (rust)",
+    "order": "Pucciniales: Pucciniaceae",
+    "crops": [
+      "Maize"
+    ],
+    "severity": "low",
+    "description": "A rust fungus that forms powdery reddish-brown pustules on both leaf surfaces. Usually causes limited loss unless infection is heavy early in the season.",
+    "identification": [
+      "Small oval, raised, cinnamon-brown pustules",
+      "Pustules on both upper and lower leaf surfaces",
+      "Rust-coloured powder rubs off on your fingers"
+    ],
+    "symptoms": [
+      "Scattered or banded rust pustules",
+      "Yellowing around pustules",
+      "Leaves dry early in heavy infection"
+    ],
+    "lifecycle": "Spores blow in on the wind; new pustules appear about a week after infection in cool, moist conditions.",
+    "management": {
+      "cultural": [
+        "Use resistant varieties",
+        "Plant early so the crop matures before peak rust"
+      ],
+      "biological": [
+        "Maintain good crop nutrition"
+      ],
+      "chemical": [
+        "Rarely needed on grain maize; consider registered fungicide only for severe early infection"
+      ]
+    },
+    "products": [
+      "hand-lens"
+    ],
+    "category": "disease",
+    "kingdom": "Fungi",
+    "group": "Fungus",
+    "taxonomy": "Fungi › Basidiomycota › Pucciniomycetes › Pucciniales › Pucciniaceae",
+    "edibility": {
+      "status": "safe",
+      "reason": "Rust only infects leaves; it does not make the grain harmful.",
+      "advice": [
+        "Grain is safe; dry well before storage"
+      ]
+    }
+  },
+  "maize_stem_borer": {
+    "common_name": "Maize Stem Borer",
+    "scientific_name": "Busseola fusca, Sesamia calamistis, Eldana saccharina",
+    "organism_type": "Insect (moth larva)",
+    "order": "Lepidoptera: Noctuidae / Pyralidae",
+    "crops": [
+      "Maize",
+      "Sorghum",
+      "Sugarcane",
+      "Rice"
+    ],
+    "severity": "high",
+    "description": "Caterpillars that bore into maize stems and cobs, weakening the plant and cutting off the flow of water and nutrients.",
+    "identification": [
+      "Creamy or pinkish larvae found inside tunnels in the stem",
+      "Small round holes on the stem with frass pushed out",
+      "Rows of 'shot holes' across leaves as they unroll"
+    ],
+    "symptoms": [
+      "'Dead heart': the central shoot dries out on young plants",
+      "Tunnels and holes in stems",
+      "Broken stems and lodging",
+      "Damaged cobs"
+    ],
+    "lifecycle": "Eggs laid under leaf sheaths → larvae feed in whorl then bore into stem (3-5 weeks) → pupate in stem → adult moth. Larvae can survive the dry season in old stalks.",
+    "management": {
+      "cultural": [
+        "Destroy or chop old stalks after harvest",
+        "Early and synchronised planting",
+        "Intercrop with cowpea or push-pull with Desmodium",
+        "Balanced fertiliser for vigorous plants"
+      ],
+      "biological": [
+        "Conserve parasitic wasps (Cotesia spp.)",
+        "Bt biopesticides on young larvae before they enter the stem"
+      ],
+      "chemical": [
+        "Treat early, before larvae bore into the stem",
+        "Use registered granules or sprays in the whorl as per label"
+      ]
+    },
+    "products": [
+      "bt-biopesticide",
+      "knapsack-sprayer",
+      "hand-lens"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Lepidoptera › Noctuidae / Pyralidae",
+    "edibility": {
+      "status": "caution",
+      "reason": "Borer holes in cobs let in moulds that can produce toxins.",
+      "advice": [
+        "Remove damaged kernels and any larvae",
+        "Throw away cobs with visible mould"
+      ]
+    }
+  },
+  "maize_streak_virus": {
+    "common_name": "Maize Streak Virus",
+    "scientific_name": "Maize streak virus (Mastrevirus)",
+    "organism_type": "Virus (spread by leafhoppers)",
+    "order": "Geminiviridae",
+    "crops": [
+      "Maize",
+      "Other cereals and grasses"
+    ],
+    "severity": "high",
+    "description": "Africa's most important maize virus, spread by Cicadulina leafhoppers. Early infection stunts plants and can cause total loss.",
+    "identification": [
+      "Narrow broken yellow streaks running along the leaf veins",
+      "Streaks appear on new leaves after infection",
+      "Tiny leafhoppers on plants"
+    ],
+    "symptoms": [
+      "Chlorotic streaking of leaves",
+      "Stunted plants",
+      "Small or no cobs when infected young"
+    ],
+    "lifecycle": "Leafhoppers pick up the virus from grasses or infected maize and carry it to new plants. There is no cure once a plant is infected.",
+    "management": {
+      "cultural": [
+        "Plant MSV-resistant varieties",
+        "Avoid late planting next to older maize",
+        "Remove grass weeds around fields",
+        "Pull out infected young plants"
+      ],
+      "biological": [
+        "Conserve natural enemies of leafhoppers"
+      ],
+      "chemical": [
+        "Treated seed or early leafhopper control in high-risk areas, using registered products"
+      ]
+    },
+    "products": [
+      "yellow-sticky-traps"
+    ],
+    "category": "disease",
+    "kingdom": "Virus (non-cellular)",
+    "group": "Virus",
+    "taxonomy": "Virus › Geminiviridae › Mastrevirus",
+    "edibility": {
+      "status": "safe",
+      "reason": "Plant viruses do not infect people. Cobs may be small but are safe.",
+      "advice": [
+        "Grain from infected plants is safe to eat"
+      ]
+    }
+  },
+  "red_spider_mite": {
+    "common_name": "Red Spider Mite",
+    "scientific_name": "Tetranychus urticae, Tetranychus evansi",
+    "organism_type": "Mite (arachnid)",
+    "order": "Acari: Tetranychidae",
+    "crops": [
+      "Tomato",
+      "Garden egg",
+      "Pepper",
+      "Okra",
+      "Beans",
+      "Cassava"
+    ],
+    "severity": "moderate",
+    "description": "Tiny mites that feed on leaf cells and spin fine webs. They build up very fast in hot, dry and dusty conditions.",
+    "identification": [
+      "Red, orange or greenish mites under 0.5 mm",
+      "Fine silk webbing on the underside of leaves and between leaves",
+      "Best seen with a hand lens"
+    ],
+    "symptoms": [
+      "Fine yellow or white speckling (stippling) on leaves",
+      "Bronzed, dry leaves that fall off",
+      "Webbing covering shoot tips in heavy attacks"
+    ],
+    "lifecycle": "Egg → larva → two nymph stages → adult in 7-12 days in hot weather; each female lays around 100 eggs.",
+    "management": {
+      "cultural": [
+        "Keep plants well watered and reduce dust",
+        "Remove heavily infested leaves",
+        "Avoid pyrethroid sprays, which often cause mite outbreaks"
+      ],
+      "biological": [
+        "Predatory mites (Phytoseiulus persimilis)",
+        "Neem oil or soap sprays on the underside of leaves"
+      ],
+      "chemical": [
+        "Use a registered acaricide (not a general insecticide) and rotate products"
+      ]
+    },
+    "products": [
+      "neem-oil",
+      "hand-lens",
+      "knapsack-sprayer"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Mite",
+    "taxonomy": "Animalia › Arthropoda › Arachnida › Acari › Trombidiformes › Tetranychidae",
+    "edibility": {
+      "status": "safe",
+      "reason": "Mites weaken the plant but do not make the produce harmful.",
+      "advice": [
+        "Wash produce to remove mites and webbing"
+      ]
+    }
+  },
+  "thrips": {
+    "common_name": "Thrips",
+    "scientific_name": "Thrips tabaci, Frankliniella spp., Megalurothrips sjostedti",
+    "organism_type": "Insect (rasping-sucking)",
+    "order": "Thysanoptera: Thripidae",
+    "crops": [
+      "Onion",
+      "Cowpea",
+      "Tomato",
+      "Pepper",
+      "Cabbage"
+    ],
+    "severity": "moderate",
+    "description": "Very slender, tiny insects that scrape plant surfaces and suck the contents. On cowpea, flower thrips cause flowers to drop.",
+    "identification": [
+      "Slender insects 1-2 mm long, yellow to dark brown",
+      "Fringed wings seen with a hand lens",
+      "Hide in flowers, leaf sheaths and onion necks"
+    ],
+    "symptoms": [
+      "Silvery or bronze streaks on leaves",
+      "Black dots of excrement",
+      "Distorted leaves and fruit",
+      "Flower abortion in cowpea"
+    ],
+    "lifecycle": "Egg inside plant tissue → two larval stages → pupa in soil → adult. About 2-3 weeks in warm weather.",
+    "management": {
+      "cultural": [
+        "Overhead irrigation or rain reduces numbers",
+        "Remove weeds and crop residues",
+        "Avoid planting next to infested onion fields"
+      ],
+      "biological": [
+        "Blue sticky traps for monitoring",
+        "Neem-based sprays",
+        "Conserve predatory bugs (Orius) and mites"
+      ],
+      "chemical": [
+        "Spray at flower bud stage for cowpea flower thrips using registered products"
+      ]
+    },
+    "products": [
+      "blue-sticky-traps",
+      "neem-oil",
+      "hand-lens"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Thysanoptera › Thripidae",
+    "edibility": {
+      "status": "safe",
+      "reason": "Thrips damage is mostly cosmetic scarring.",
+      "advice": [
+        "Wash well; scarred skin is safe to eat",
+        "Discard fruit that is split or rotting"
+      ]
+    }
+  },
+  "tomato_bacterial_spot": {
+    "common_name": "Tomato Bacterial Spot",
+    "scientific_name": "Xanthomonas spp. (X. vesicatoria, X. perforans)",
+    "organism_type": "Bacterium",
+    "order": "Xanthomonadales: Xanthomonadaceae",
+    "crops": [
+      "Tomato",
+      "Pepper"
+    ],
+    "severity": "moderate",
+    "description": "A bacterial disease favoured by warm rain. It spots leaves and fruit and is spread by seed, transplants and splashing water.",
+    "identification": [
+      "Small dark, water-soaked leaf spots, often with yellow halos",
+      "Raised, scabby brown spots on green fruit"
+    ],
+    "symptoms": [
+      "Many small dark leaf spots",
+      "Leaf yellowing and drop",
+      "Scabby spots on fruit"
+    ],
+    "lifecycle": "Carried on seed and plant debris; spreads by rain splash, handling of wet plants and tools.",
+    "management": {
+      "cultural": [
+        "Use certified disease-free seed and healthy transplants",
+        "Avoid working in wet plants",
+        "Rotate crops and remove debris"
+      ],
+      "biological": [
+        "Resistant varieties where available"
+      ],
+      "chemical": [
+        "Copper-based registered products can slow spread; follow label"
+      ]
+    },
+    "products": [
+      "knapsack-sprayer",
+      "ppe-kit"
+    ],
+    "category": "disease",
+    "kingdom": "Bacteria",
+    "group": "Bacterium",
+    "taxonomy": "Bacteria › Pseudomonadota › Gammaproteobacteria › Xanthomonadales › Xanthomonadaceae",
+    "edibility": {
+      "status": "caution",
+      "reason": "Spots are on the skin; the bacterium is a plant pathogen, not a human one.",
+      "advice": [
+        "Wash well and cut away spotted skin",
+        "Discard fruit that is soft or rotting"
+      ]
+    }
+  },
+  "tomato_early_blight": {
+    "common_name": "Tomato Early Blight",
+    "scientific_name": "Alternaria solani",
+    "organism_type": "Fungus",
+    "order": "Pleosporales: Pleosporaceae",
+    "crops": [
+      "Tomato",
+      "Potato",
+      "Garden egg"
+    ],
+    "severity": "moderate",
+    "description": "A common fungal disease that starts on older lower leaves and can reach the fruit, causing dark sunken spots near the stem end.",
+    "identification": [
+      "Brown spots with concentric 'target' rings",
+      "Yellow halo around spots",
+      "Starts on the oldest leaves"
+    ],
+    "symptoms": [
+      "Target-like leaf spots",
+      "Yellowing and leaf drop from the bottom up",
+      "Dark leathery sunken spots on fruit near the stem"
+    ],
+    "lifecycle": "Survives in soil and plant debris; spores spread by wind and water splash in warm, humid weather.",
+    "management": {
+      "cultural": [
+        "Rotate away from tomato-family crops for 2-3 years",
+        "Mulch and stake plants to keep leaves off soil",
+        "Remove infected lower leaves",
+        "Water at the base, not over the leaves"
+      ],
+      "biological": [
+        "Bacillus subtilis-based biofungicides where available"
+      ],
+      "chemical": [
+        "Registered protectant fungicides at first symptoms, following the label"
+      ]
+    },
+    "products": [
+      "knapsack-sprayer",
+      "ppe-kit"
+    ],
+    "category": "disease",
+    "kingdom": "Fungi",
+    "group": "Fungus",
+    "taxonomy": "Fungi › Ascomycota › Dothideomycetes › Pleosporales › Pleosporaceae",
+    "edibility": {
+      "status": "caution",
+      "reason": "Fruit spots can let in rot organisms.",
+      "advice": [
+        "Cut away small spots generously or discard spotted fruit",
+        "Eat only firm, clean fruit"
+      ]
+    }
+  },
+  "tomato_late_blight": {
+    "common_name": "Tomato Late Blight",
+    "scientific_name": "Phytophthora infestans",
+    "organism_type": "Oomycete (water mould)",
+    "order": "Peronosporales: Peronosporaceae",
+    "crops": [
+      "Tomato",
+      "Potato"
+    ],
+    "severity": "high",
+    "description": "A fast-spreading water mould that can destroy a field within days in cool, wet weather. Infected fruit rots.",
+    "identification": [
+      "Large, irregular, greasy grey-green to brown leaf patches",
+      "White downy growth under leaves in humid mornings",
+      "Firm brown greasy blotches on fruit"
+    ],
+    "symptoms": [
+      "Rapid browning and collapse of leaves and stems",
+      "Dark lesions on stems",
+      "Brown, rotting fruit"
+    ],
+    "lifecycle": "Spores spread by wind and rain; new infections appear within 3-5 days in cool, moist weather.",
+    "management": {
+      "cultural": [
+        "Remove and destroy infected plants immediately; do not compost",
+        "Space and stake plants for air flow",
+        "Avoid overhead watering",
+        "Do not plant next to potatoes"
+      ],
+      "biological": [
+        "Use tolerant varieties where available"
+      ],
+      "chemical": [
+        "Protectant fungicides before and during wet spells, using registered products"
+      ]
+    },
+    "products": [
+      "knapsack-sprayer",
+      "ppe-kit"
+    ],
+    "category": "disease",
+    "kingdom": "Chromista / Stramenopila",
+    "group": "Oomycete",
+    "taxonomy": "Stramenopila › Oomycota › Peronosporales › Peronosporaceae",
+    "edibility": {
+      "status": "unsafe",
+      "reason": "Infected fruit rots quickly and invites other microbes.",
+      "advice": [
+        "Do not eat fruit with brown, greasy blotches — discard it",
+        "Unaffected, firm fruit from the same plant can be eaten after washing"
+      ]
+    }
+  },
+  "tomato_leaf_mold": {
+    "common_name": "Tomato Leaf Mould",
+    "scientific_name": "Passalora fulva (syn. Fulvia fulva)",
+    "organism_type": "Fungus",
+    "order": "Mycosphaerellales: Mycosphaerellaceae",
+    "crops": [
+      "Tomato"
+    ],
+    "severity": "moderate",
+    "description": "A fungal disease of tomato leaves that thrives in humid, poorly ventilated conditions such as greenhouses and dense plantings.",
+    "identification": [
+      "Pale green to yellow patches on the upper leaf surface",
+      "Olive-green to brown velvety mould on the underside of the same patches"
+    ],
+    "symptoms": [
+      "Yellow blotches on upper leaf",
+      "Velvety olive mould underneath",
+      "Leaves curl, wither and drop"
+    ],
+    "lifecycle": "Survives on plant debris and seed; spores spread by air, water and handling when humidity is above about 85%.",
+    "management": {
+      "cultural": [
+        "Improve air flow: stake, prune lower leaves, wider spacing",
+        "Avoid wetting leaves; water at the base",
+        "Remove and destroy infected leaves and crop debris"
+      ],
+      "biological": [
+        "Grow resistant varieties where available"
+      ],
+      "chemical": [
+        "Registered protectant fungicides if disease spreads, following the label"
+      ]
+    },
+    "products": [
+      "knapsack-sprayer",
+      "ppe-kit"
+    ],
+    "category": "disease",
+    "kingdom": "Fungi",
+    "group": "Fungus",
+    "taxonomy": "Fungi › Ascomycota › Dothideomycetes › Mycosphaerellales › Mycosphaerellaceae",
+    "edibility": {
+      "status": "safe",
+      "reason": "The mould attacks leaves; the fruit is normally not infected and is safe to eat.",
+      "advice": [
+        "Wash fruit before eating",
+        "Discard any fruit that is soft or mouldy"
+      ]
+    }
+  },
+  "tomato_leafminer": {
+    "common_name": "Tomato Leafminer",
+    "scientific_name": "Tuta absoluta",
+    "organism_type": "Insect (moth larva)",
+    "order": "Lepidoptera: Gelechiidae",
+    "crops": [
+      "Tomato",
+      "Garden egg",
+      "Potato",
+      "Pepper"
+    ],
+    "severity": "high",
+    "description": "An invasive moth whose larvae mine inside tomato leaves, stems and fruits. Uncontrolled, it can destroy entire tomato fields.",
+    "identification": [
+      "Small greyish-brown moth about 7 mm long",
+      "Pale green to pinkish larvae inside leaf mines",
+      "Pin-sized holes in fruit"
+    ],
+    "symptoms": [
+      "Irregular translucent blotch mines in leaves",
+      "Dark frass inside mines",
+      "Holes and galleries in fruit, often near the calyx",
+      "Dried, burnt-looking leaves in heavy attack"
+    ],
+    "lifecycle": "Egg → four larval instars inside leaf or fruit → pupa in soil or leaf → adult. Complete cycle in about 3-4 weeks; many generations per year.",
+    "management": {
+      "cultural": [
+        "Use clean seedlings from protected nurseries",
+        "Remove and destroy infested leaves and fruit",
+        "Crop rotation away from tomato family",
+        "Destroy crop residues after harvest"
+      ],
+      "biological": [
+        "Pheromone traps for monitoring and mass trapping",
+        "Bt biopesticides and neem-based products",
+        "Conserve predatory bugs such as Nesidiocoris"
+      ],
+      "chemical": [
+        "Use registered products and rotate modes of action; resistance develops quickly"
+      ]
+    },
+    "products": [
+      "pheromone-trap-tuta",
+      "bt-biopesticide",
+      "neem-oil",
+      "insect-net"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Lepidoptera › Gelechiidae",
+    "edibility": {
+      "status": "caution",
+      "reason": "Larvae tunnel inside the fruit, which then rots easily.",
+      "advice": [
+        "Cut away or discard fruit with holes or tunnels",
+        "Eat only firm, undamaged fruit"
+      ]
+    }
+  },
+  "tomato_mosaic_virus": {
+    "common_name": "Tomato Mosaic Virus",
+    "scientific_name": "Tomato mosaic virus (ToMV, Tobamovirus)",
+    "organism_type": "Virus (spread by touch, tools and seed)",
+    "order": "Virgaviridae",
+    "crops": [
+      "Tomato",
+      "Pepper"
+    ],
+    "severity": "moderate",
+    "description": "A very stable virus spread by hands, tools and infected seed. It mottles leaves and can reduce yield and fruit quality.",
+    "identification": [
+      "Light and dark green mosaic mottling on leaves",
+      "Leaves may be fern-like, curled or distorted",
+      "Uneven ripening or brown streaks in fruit"
+    ],
+    "symptoms": [
+      "Mosaic mottling",
+      "Leaf distortion",
+      "Stunting",
+      "Blotchy ripening of fruit"
+    ],
+    "lifecycle": "Survives for long periods in debris and on tools and hands; enters plants through small wounds during handling. No insect is needed.",
+    "management": {
+      "cultural": [
+        "Use certified virus-free seed",
+        "Remove infected plants",
+        "Wash hands and disinfect tools between plants",
+        "Do not smoke or handle tobacco while working with plants"
+      ],
+      "biological": [
+        "Plant resistant varieties"
+      ],
+      "chemical": [
+        "No chemical cure for the virus"
+      ]
+    },
+    "products": [
+      "hand-lens"
+    ],
+    "category": "disease",
+    "kingdom": "Virus (non-cellular)",
+    "group": "Virus",
+    "taxonomy": "Virus › Virgaviridae › Tobamovirus",
+    "edibility": {
+      "status": "safe",
+      "reason": "Plant viruses do not infect people. Blotchy fruit is safe to eat.",
+      "advice": [
+        "Wash fruit before eating"
+      ]
+    }
+  },
+  "tomato_septoria_leaf_spot": {
+    "common_name": "Tomato Septoria Leaf Spot",
+    "scientific_name": "Septoria lycopersici",
+    "organism_type": "Fungus",
+    "order": "Mycosphaerellales: Mycosphaerellaceae",
+    "crops": [
+      "Tomato",
+      "Garden egg"
+    ],
+    "severity": "moderate",
+    "description": "A very common fungal leaf spot that starts on lower leaves and can strip plants of foliage, exposing fruit to sunscald.",
+    "identification": [
+      "Many small round spots (2-5 mm) with grey centres and dark borders",
+      "Tiny black dots (fruiting bodies) in the spot centres"
+    ],
+    "symptoms": [
+      "Numerous small leaf spots on lower leaves first",
+      "Yellowing and leaf drop",
+      "Defoliated plants with sunscalded fruit"
+    ],
+    "lifecycle": "Survives on debris and weeds of the tomato family; spores are splashed by rain and irrigation in warm, wet weather.",
+    "management": {
+      "cultural": [
+        "Remove infected lower leaves",
+        "Mulch to stop soil splash",
+        "Rotate crops and destroy debris",
+        "Control nightshade weeds"
+      ],
+      "biological": [
+        "Keep plants well spaced and vigorous"
+      ],
+      "chemical": [
+        "Registered protectant fungicides at first spots"
+      ]
+    },
+    "products": [
+      "knapsack-sprayer",
+      "ppe-kit"
+    ],
+    "category": "disease",
+    "kingdom": "Fungi",
+    "group": "Fungus",
+    "taxonomy": "Fungi › Ascomycota › Dothideomycetes › Mycosphaerellales › Mycosphaerellaceae",
+    "edibility": {
+      "status": "safe",
+      "reason": "Septoria infects leaves, not fruit. Fruit is safe to eat.",
+      "advice": [
+        "Wash fruit before eating",
+        "Discard fruit with sunscald that has gone soft"
+      ]
+    }
+  },
+  "tomato_target_spot": {
+    "common_name": "Tomato Target Spot",
+    "scientific_name": "Corynespora cassiicola",
+    "organism_type": "Fungus",
+    "order": "Pleosporales: Corynesporascaceae",
+    "crops": [
+      "Tomato",
+      "Cucumber",
+      "Pepper",
+      "Cassava"
+    ],
+    "severity": "moderate",
+    "description": "A fungal disease of warm, humid regions that causes target-like spots on leaves, stems and fruit.",
+    "identification": [
+      "Brown leaf spots with light-brown concentric rings",
+      "Spots often have a yellow halo",
+      "Small sunken spots on fruit"
+    ],
+    "symptoms": [
+      "Target-like leaf spots",
+      "Leaf yellowing and drop",
+      "Sunken, cracked spots on fruit"
+    ],
+    "lifecycle": "Survives on crop debris and many host plants; spores spread by wind and water in warm, wet weather.",
+    "management": {
+      "cultural": [
+        "Prune for air flow",
+        "Remove infected leaves and debris",
+        "Avoid overhead watering",
+        "Rotate crops"
+      ],
+      "biological": [
+        "Keep plants vigorous with balanced nutrition"
+      ],
+      "chemical": [
+        "Registered fungicides when spots appear, rotating products"
+      ]
+    },
+    "products": [
+      "knapsack-sprayer",
+      "ppe-kit"
+    ],
+    "category": "disease",
+    "kingdom": "Fungi",
+    "group": "Fungus",
+    "taxonomy": "Fungi › Ascomycota › Dothideomycetes › Pleosporales › Corynesporascaceae",
+    "edibility": {
+      "status": "caution",
+      "reason": "Fruit spots can crack and let rot organisms in.",
+      "advice": [
+        "Cut away spotted areas or discard spotted fruit",
+        "Eat only firm, clean fruit"
+      ]
+    }
+  },
+  "tomato_yellow_leaf_curl": {
+    "common_name": "Tomato Yellow Leaf Curl Virus",
+    "scientific_name": "Tomato yellow leaf curl virus (Begomovirus)",
+    "organism_type": "Virus (spread by whitefly)",
+    "order": "Geminiviridae",
+    "crops": [
+      "Tomato"
+    ],
+    "severity": "high",
+    "description": "A whitefly-transmitted virus that stunts tomato plants and stops them setting fruit when infection is early.",
+    "identification": [
+      "Young leaves small, curled upward and yellow at the edges",
+      "Stunted, bushy plants",
+      "Whiteflies under leaves"
+    ],
+    "symptoms": [
+      "Upward leaf curling and yellow margins",
+      "Severe stunting",
+      "Flower drop and few fruit"
+    ],
+    "lifecycle": "Whiteflies (Bemisia tabaci) pick up the virus from infected plants and spread it; infected plants cannot be cured.",
+    "management": {
+      "cultural": [
+        "Raise seedlings under insect-proof net",
+        "Remove infected plants early",
+        "Plant tolerant varieties",
+        "Avoid planting near old infected crops"
+      ],
+      "biological": [
+        "Manage whitefly with yellow sticky traps and neem"
+      ],
+      "chemical": [
+        "Control whitefly early with registered products; the virus itself has no cure"
+      ]
+    },
+    "products": [
+      "insect-net",
+      "yellow-sticky-traps",
+      "neem-oil"
+    ],
+    "category": "disease",
+    "kingdom": "Virus (non-cellular)",
+    "group": "Virus",
+    "taxonomy": "Virus › Geminiviridae › Begomovirus",
+    "edibility": {
+      "status": "safe",
+      "reason": "Plant viruses do not infect people. Any fruit produced is safe.",
+      "advice": [
+        "Wash fruit before eating"
+      ]
+    }
+  },
+  "whitefly": {
+    "common_name": "Whitefly",
+    "scientific_name": "Bemisia tabaci",
+    "organism_type": "Insect (sap-sucking)",
+    "order": "Hemiptera: Aleyrodidae",
+    "crops": [
+      "Cassava",
+      "Tomato",
+      "Pepper",
+      "Garden egg",
+      "Okra",
+      "Cotton"
+    ],
+    "severity": "high",
+    "description": "Tiny white flying insects that feed on the underside of leaves. Their biggest damage comes from spreading viruses such as cassava mosaic disease and tomato yellow leaf curl.",
+    "identification": [
+      "White, moth-like insects about 1 mm long",
+      "Fly up in a cloud when the plant is shaken",
+      "Flat, oval, scale-like nymphs under the leaf"
+    ],
+    "symptoms": [
+      "Yellowing and mottling of leaves",
+      "Honeydew and sooty mould",
+      "Leaf curl, mosaic patterns and stunting from transmitted viruses"
+    ],
+    "lifecycle": "Egg → four nymph stages → adult in about 3-4 weeks. Adults live for several weeks and lay eggs on young leaves.",
+    "management": {
+      "cultural": [
+        "Use virus-free planting material and tolerant varieties",
+        "Remove and destroy virus-infected plants early",
+        "Avoid planting new crops next to old infested ones",
+        "Use insect-proof netting for nurseries"
+      ],
+      "biological": [
+        "Yellow sticky traps",
+        "Neem oil sprays on the underside of leaves",
+        "Conserve parasitoid wasps such as Encarsia and Eretmocerus"
+      ],
+      "chemical": [
+        "Whitefly resists many insecticides quickly; rotate modes of action",
+        "Use only registered products and follow extension advice"
+      ]
+    },
+    "products": [
+      "yellow-sticky-traps",
+      "neem-oil",
+      "insect-net"
+    ],
+    "category": "pest",
+    "kingdom": "Animalia",
+    "group": "Insect",
+    "taxonomy": "Animalia › Arthropoda › Insecta › Hemiptera › Aleyrodidae",
+    "edibility": {
+      "status": "safe",
+      "reason": "Whiteflies feed on leaves; the produce itself is not made harmful.",
+      "advice": [
+        "Wash produce before eating",
+        "Fruits from virus-affected plants may be small but are safe"
+      ]
+    }
+  },
+  "healthy": {
+    "common_name": "Healthy / No Pest Detected",
+    "scientific_name": "-",
+    "organism_type": "None",
+    "order": "-",
+    "crops": [
+      "All crops"
+    ],
+    "severity": "none",
+    "description": "No pest or pest damage was recognised in this image. Keep scouting regularly, because early detection is the cheapest form of control.",
+    "identification": [
+      "Uniform leaf colour",
+      "No holes, mines, webbing or insects visible"
+    ],
+    "symptoms": [
+      "None"
+    ],
+    "lifecycle": "-",
+    "management": {
+      "cultural": [
+        "Scout your field at least once a week",
+        "Keep the field weed-free and remove crop residues",
+        "Rotate crops between seasons"
+      ],
+      "biological": [
+        "Protect natural enemies by avoiding unnecessary sprays",
+        "Use sticky or pheromone traps for early warning"
+      ],
+      "chemical": [
+        "No treatment needed"
+      ]
+    },
+    "products": [
+      "yellow-sticky-traps",
+      "hand-lens"
+    ],
+    "category": "healthy",
+    "kingdom": "-",
+    "group": "None",
+    "taxonomy": "-",
+    "edibility": {
+      "status": "safe",
+      "reason": "No pest, disease or rot was recognised in the photo.",
+      "advice": [
+        "Wash produce before eating as usual"
+      ]
+    }
+  }
+}

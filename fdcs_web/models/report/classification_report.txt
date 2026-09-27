@@ -1,0 +1,19 @@
+                           precision    recall  f1-score   support
+
+                  healthy     0.9810    0.9810    0.9810       105
+     maize_gray_leaf_spot     0.8462    0.8571    0.8516        77
+        maize_leaf_blight     0.8857    0.8857    0.8857       105
+               maize_rust     1.0000    0.9905    0.9952       105
+          red_spider_mite     0.9485    0.8762    0.9109       105
+    tomato_bacterial_spot     0.9505    0.9143    0.9320       105
+      tomato_early_blight     0.9072    0.8381    0.8713       105
+       tomato_late_blight     0.9612    0.9429    0.9519       105
+         tomato_leaf_mold     0.9099    0.9619    0.9352       105
+      tomato_mosaic_virus     0.8889    1.0000    0.9412        56
+tomato_septoria_leaf_spot     0.9208    0.8857    0.9029       105
+       tomato_target_spot     0.8291    0.9238    0.8739       105
+  tomato_yellow_leaf_curl     0.9623    0.9714    0.9668       105
+
+                 accuracy                         0.9239      1288
+                macro avg     0.9224    0.9253    0.9230      1288
+             weighted avg     0.9253    0.9239    0.9239      1288

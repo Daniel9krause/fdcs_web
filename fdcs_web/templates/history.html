@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% from "_macros.html" import severity_tag, eat_badge %}
+{% block title %}Scan history{% endblock %}
+{% block content %}
+<div class="container page-head">
+  <span class="eyebrow">Records</span><h1>Scan history</h1>
+  <p class="muted">{{ stats.total }} scan{{ '' if stats.total == 1 else 's' }} {{ 'from all visitors' if is_admin else 'from this device (private to you)' }}.</p>
+</div>
+<div class="container">
+  {% if stats.by_label %}
+  <div class="filter-bar">
+    <a href="{{ url_for('history') }}" class="{{ 'active' if not active }}">All ({{ stats.total }})</a>
+    {% for row in stats.by_label %}<a href="{{ url_for('history', label=row.label) }}" class="{{ 'active' if active == row.label }}">{{ pest_names.get(row.label, row.label) }} ({{ row.n }})</a>{% endfor %}
+  </div>
+  {% endif %}
+  {% if scans %}
+  <div class="table-wrap"><table class="table">
+    <thead><tr><th>Image</th><th>Result</th><th>Confidence</th><th>Severity</th><th>Safe to eat?</th><th>Crop / location</th><th>Date</th><th></th></tr></thead>
+    <tbody>
+    {% for s in scans %}
+      <tr>
+        <td><a href="{{ url_for('result', scan_id=s.id) }}"><img class="thumb" src="{{ url_for('uploaded', filename=s.image_file) }}" alt="" loading="lazy"></a></td>
+        <td><a href="{{ url_for('result', scan_id=s.id) }}"><b>{{ pest_names.get(s.label, s.label) }}</b></a>{% if s.is_demo %} <span class="tag tag-moderate">demo</span>{% endif %}<div class="small muted">via {{ s.source }}</div></td>
+        <td>{{ (s.confidence*100)|round(1) }}%</td>
+        <td>{{ severity_tag(s.severity) }}</td>
+        <td>{{ eat_badge(s.eat_status or 'unknown') }}</td>
+        <td class="small">{{ s.crop or '-' }}<br><span class="muted">{{ s.location or '' }}</span></td>
+        <td class="small">{{ s.created_at.replace('T', ' ')[:16] }}</td>
+        <td><form method="post" action="{{ url_for('delete_scan', scan_id=s.id) }}" data-confirm="Delete this scan?"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button class="btn btn-sm btn-danger">Delete</button></form></td>
+      </tr>
+    {% endfor %}
+    </tbody></table></div>
+  {% else %}
+  <div class="card empty"><p>No scans yet.</p><a class="btn" href="{{ url_for('scan') }}">Scan your first crop</a></div>
+  {% endif %}
+</div>
+{% endblock %}

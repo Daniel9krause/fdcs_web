@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}About{% endblock %}
+{% block content %}
+<div class="container page-head">
+  <span class="eyebrow">About the app</span>
+  <h1>{{ cfg.APP_FULL_NAME }}</h1>
+  <p class="muted" style="max-width:720px">{{ cfg.APP_NAME }} brings convolutional neural networks to the farm gate. It was designed, built and trained by <b>{{ cfg.CREATOR }}</b>: the AI model, the crop-health knowledge base, the web app and the store.</p>
+</div>
+<div class="container stack">
+  <div class="grid grid-2">
+    <div class="card"><h3>The problem</h3><p>Smallholder farmers lose a large share of their harvest to pests and diseases every season, and some conditions, such as aflatoxin mould, make food dangerous to eat. Extension officers are few and far between, and many problems look alike to the untrained eye.</p></div>
+    <div class="card"><h3>Our solution</h3><p>A phone camera and a trained CNN. {{ cfg.APP_NAME }} recognises {{ model_info.classes - 1 }} pests and diseases plus healthy crops, classifies the organism responsible, gives a safe-to-eat verdict and management advice, and stores every photo in a crop gallery that can be exported to retrain the model.</p></div>
+  </div>
+
+  <div class="card">
+    <h3>How the model works</h3>
+    <div class="grid grid-4" style="margin-top:1rem">
+      {% for n, t, d in [
+        ('1','Dataset','8,585 labelled tomato and maize leaf photos from PlantVillage, split 70/15/15 into training, validation and test sets.'),
+        ('2','Transfer learning','MobileNetV2 pre-trained on ImageNet extracts features from each photo and augmented copies; a dense classifier is trained on them. 92.4% accuracy on unseen test photos.'),
+        ('3','Export','The trained network is converted to TensorFlow Lite so the same model runs on the server and the phone.'),
+        ('4','Detection & safety','Overlapping tiles are classified and affected regions boxed; the result is mapped to the organism and a food-safety verdict.')] %}
+      <div><div class="feature-icon"><b>{{ n }}</b></div><h4 style="margin:.25rem 0">{{ t }}</h4><p class="small muted">{{ d }}</p></div>
+      {% endfor %}
+    </div>
+    <dl class="facts" style="margin-top:1rem">
+      <dt>Architecture</dt><dd>MobileNetV2 + global average pooling + dropout + softmax</dd>
+      <dt>Input size</dt><dd>{{ model_info.input_size }} × {{ model_info.input_size }} RGB</dd>
+      <dt>Runtime</dt><dd>{{ model_info.backend }}</dd>
+      <dt>Classes</dt><dd>{{ model_info.labels|map('replace', '_', ' ')|join(', ') }}</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>Created by</h3>
+    <div class="grid grid-4">
+      {% for m in cfg.TEAM %}<div><b>{{ m.name }}</b><div class="small muted">{{ m.role }}</div></div>{% endfor %}
+      {% if cfg.SUPERVISOR %}<div><b>{{ cfg.SUPERVISOR }}</b><div class="small muted">Supervisor</div></div>{% endif %}
+    </div>
+  </div>
+
+  <div class="card" style="background:var(--green-50)">
+    <h3>Limitations</h3>
+    <p style="margin:0">The model recognises only the conditions it was trained on and works best on clear, close-up photos; unfamiliar crops are reported as "not recognised". The safe-to-eat verdict is based on what is visible: it cannot detect pesticide residues or invisible toxins. The app supports farmers' decisions but does not replace an extension officer or laboratory testing.</p>
+  </div>
+  <p><a class="btn" href="{{ url_for('scan') }}">{{ icon('camera', 18) }} Try it now</a> <a class="btn btn-outline" href="{{ url_for('contact') }}">Contact us</a></p>
+</div>
+{% endblock %}

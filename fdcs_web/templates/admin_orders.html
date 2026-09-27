@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Orders & payments{% endblock %}
+{% set labels = {'awaiting_payment':'Awaiting payment','payment_submitted':'Check payment','paid':'Paid','cash_on_delivery':'Cash on delivery','delivered':'Delivered','cancelled':'Cancelled','confirmed':'Free / confirmed'} %}
+{% set tagc = {'awaiting_payment':'tag-low','payment_submitted':'tag-moderate','paid':'tag-none','delivered':'tag-none','cancelled':'tag-high','cash_on_delivery':'tag-low','confirmed':'tag-none'} %}
+{% block content %}
+<div class="container page-head">
+  <span class="eyebrow">Owner</span><h1>Orders &amp; payments</h1>
+  <p class="muted">Money goes to {{ cfg.MOMO_NETWORK }} {{ cfg.MOMO_NUMBER }}. {{ 'Paystack is connected: online payments are verified automatically.' if online else 'Paystack is not connected, so direct MoMo payments must be checked against your MoMo SMS before marking them paid.' }}
+    · <a href="{{ url_for('admin_prices') }}">Edit prices</a> · <a href="{{ url_for('admin_logout') }}">Log out</a></p>
+  <div class="trust" style="margin-top:1rem">
+    <div><b>{{ totals.paid_total|cedis }}</b>received ({{ totals.paid_count }} orders)</div>
+    <div><b>{{ totals.to_check }}</b>waiting for payment / check</div>
+  </div>
+</div>
+<div class="container stack">
+  <div class="filter-bar">
+    <a href="{{ url_for('admin_orders') }}" class="{{ 'active' if not active }}">All</a>
+    {% for k in ['payment_submitted','awaiting_payment','paid','cash_on_delivery','delivered','cancelled'] %}
+    <a href="{{ url_for('admin_orders', status=k) }}" class="{{ 'active' if active == k }}">{{ labels[k] }}</a>{% endfor %}
+  </div>
+  {% if orders %}
+  <div class="table-wrap"><table class="table">
+    <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>
+    {% for o in orders %}
+    <tr>
+      <td><b>#{{ o.id }}</b><div class="small muted">{{ o.payment_ref }}<br>{{ o.created_at.replace('T',' ')[:16] }}</div></td>
+      <td>{{ o.customer_name }}<div class="small">{{ o.phone }}{% if o.email %}<br>{{ o.email }}{% endif %}</div><div class="small muted">{{ o.address }}</div></td>
+      <td class="small">{% for i in o['items'] %}{{ i.name }} × {{ i.qty }}<br>{% endfor %}</td>
+      <td><b>{{ o.total|money }}</b>{% if o.country and o.country != 'GH' %}<div class="small muted">{{ countries.get(o.country, ['?'])[0] }}: {{ o.display_total }}</div>{% endif %}</td>
+      <td class="small">{{ {'momo':'Direct MoMo','paystack':'Paystack','cod':'Cash on delivery','free':'Free'}.get(o.payment_method, o.payment_method) }}
+        {% if o.momo_txn_id %}<div>Txn ID: <b>{{ o.momo_txn_id }}</b><br>From: {{ o.momo_sender }}</div>{% endif %}
+        {% if o.admin_note %}<div class="muted">{{ o.admin_note }}</div>{% endif %}</td>
+      <td><span class="tag {{ tagc.get(o.status,'') }}">{{ labels.get(o.status, o.status) }}</span></td>
+      <td>
+        <form method="post" action="{{ url_for('admin_update_order', order_id=o.id) }}" class="stack" style="min-width:150px"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+          <input type="hidden" name="return_status" value="{{ active or '' }}">
+          {% if o.status in ('awaiting_payment','payment_submitted','cash_on_delivery') %}
+            <button class="btn btn-sm" name="action" value="paid" data-confirm="Only mark as paid after the money shows in your MoMo account. Continue?">Mark paid</button>{% endif %}
+          {% if o.status in ('paid','cash_on_delivery','confirmed') %}<button class="btn btn-sm btn-outline" name="action" value="delivered">Mark delivered</button>{% endif %}
+          {% if o.status == 'payment_submitted' %}<button class="btn btn-sm btn-ghost" name="action" value="unpaid">Payment not found</button>{% endif %}
+          {% if o.status not in ('cancelled','delivered') %}<button class="btn btn-sm btn-danger" name="action" value="cancelled" data-confirm="Cancel order #{{ o.id }}?">Cancel</button>{% endif %}
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody></table></div>
+  {% else %}<div class="card empty">No orders here yet.</div>{% endif %}
+
+  {% if messages %}
+  <div class="card"><h3>Latest contact messages</h3>
+    {% for m in messages %}<div style="padding:.6rem 0;border-bottom:1px solid var(--line)"><b>{{ m.name }}</b> <span class="small muted">{{ m.email }} · {{ m.created_at[:16].replace('T',' ') }}</span><div class="small">{{ m.message }}</div></div>{% endfor %}
+  </div>{% endif %}
+</div>
+{% endblock %}

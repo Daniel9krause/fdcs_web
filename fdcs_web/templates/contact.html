@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+<div class="container page-head"><span class="eyebrow">Get in touch</span><h1>Contact us</h1>
+  <p class="muted">Questions about the app, bulk orders for cooperatives, or a pest the model doesn't know yet? Send us a message.</p></div>
+<div class="container" style="max-width:640px">
+  <form method="post" class="card"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" required></div>
+    <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+    <div class="field"><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea></div>
+    <button class="btn" style="margin-top:1rem">Send message</button>
+  </form>
+  <p class="small muted center">{{ cfg.CONTACT_EMAIL }} · {{ cfg.CONTACT_PHONE }}</p>
+</div>
+{% endblock %}

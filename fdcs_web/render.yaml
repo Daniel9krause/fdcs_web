@@ -1,0 +1,33 @@
+# One-click deploy on Render.com (free HTTPS). Push this folder to GitHub, then in Render:
+# New > Blueprint > pick the repo. Fill in the secret values in the Render dashboard.
+services:
+  - type: web
+    name: fdcs
+    runtime: python
+    plan: starter            # US$7/month - needed for the persistent disk below (disk: US$0.25/GB/month)
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app --workers 1 --threads 8 --timeout 120 --bind 0.0.0.0:$PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"      # tested version; Render's default (3.14) is too new for some packages
+      - key: FDCS_HTTPS
+        value: "1"
+      - key: FDCS_BEHIND_PROXY
+        value: "1"
+      - key: FDCS_SECRET_KEY
+        generateValue: true
+      - key: FDCS_ADMIN_PASSWORD
+        sync: false          # you type it in the dashboard - never commit it
+      - key: FDCS_PAYSTACK_SECRET_KEY
+        sync: false
+      - key: FDCS_MOMO_NAME
+        sync: false
+      - key: FDCS_DATABASE
+        value: /var/data/fdcs.sqlite3
+      - key: FDCS_UPLOAD_DIR
+        value: /var/data/uploads
+    disk:
+      name: fdcs-data
+      mountPath: /var/data
+      sizeGB: 1

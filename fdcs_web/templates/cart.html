@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+<div class="container page-head"><h1>Your cart</h1></div>
+<div class="container">
+  {% if lines %}
+  <form method="post" action="{{ url_for('cart_update') }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Item</th><th>Price</th><th>Qty</th><th>Subtotal</th></tr></thead>
+      <tbody>{% for l in lines %}
+        <tr><td><a href="{{ url_for('product', pid=l.product.id) }}"><b>{{ l.product.name }}</b></a><div class="small muted">{{ l.product.unit }}</div></td>
+          <td>{{ l.unit }}</td>
+          <td><input class="qty" type="number" name="qty_{{ l.product.id }}" value="{{ l.qty }}" min="0" max="{{ l.product.stock }}"></td>
+          <td><b>{{ l.subtotal_display }}</b></td></tr>
+      {% endfor %}</tbody>
+    </table></div>
+    <div class="controls" style="justify-content:space-between;align-items:center">
+      <div><button class="btn btn-outline">Update cart</button> <span class="small muted">Set quantity to 0 to remove.</span></div>
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap"><span class="price">Total: {{ display_total }}</span>
+        <a class="btn btn-lg" href="{{ url_for('checkout') }}">Checkout</a></div>
+    </div>
+    {% if country != home and total %}<p class="small muted" style="text-align:right">Charged in Ghana cedis: GH₵{{ '%.2f'|format(total) }}</p>{% endif %}
+  </form>
+  {% else %}
+  <div class="card empty"><p>Your cart is empty.</p><a class="btn" href="{{ url_for('store') }}">Browse the store</a></div>
+  {% endif %}
+  {% if blocked %}<div class="warn-box" style="margin-top:1rem">Not included: {{ blocked|map(attribute='name')|join(', ') }} — delivered in Ghana only.</div>{% endif %}
+</div>
+{% endblock %}

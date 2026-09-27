@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Offline{% endblock %}
+{% block content %}
+<div class="container empty" style="max-width:520px">
+  <div class="feature-icon" style="margin:0 auto 1rem;width:64px;height:64px;border-radius:50%">{{ icon('wifi-off', 32) }}</div>
+  <h1>You're offline</h1>
+  <p>Checking a crop needs an internet connection, because the photo is analysed on the {{ cfg.APP_NAME }} server.
+     Pages you opened before, like the pests &amp; diseases library, still work.</p>
+  <p class="small muted">Move to an area with signal and try again.</p>
+  <p><a class="btn" href="{{ url_for('index') }}">Try again</a> <a class="btn btn-outline" href="{{ url_for('pest_library') }}">Pests &amp; diseases</a></p>
+</div>
+{% endblock %}

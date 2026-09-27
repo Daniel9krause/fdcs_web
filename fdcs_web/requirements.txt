@@ -1,0 +1,14 @@
+# Web app
+flask>=3.0
+numpy>=1.24
+pillow>=10.0
+opencv-python-headless>=4.8   # image blur check (optional but recommended)
+
+# Production web servers
+waitress>=3.0                                   # python serve.py (Windows/Linux/macOS)
+gunicorn>=22.0; platform_system != "Windows"    # Linux hosting (Render, PythonAnywhere)
+
+# TFLite inference runtime
+ai-edge-litert; platform_system != "Windows"   # lightweight LiteRT runtime (Linux / macOS servers)
+tensorflow>=2.15; platform_system == "Windows"  # LiteRT has no Windows wheels; TF includes the interpreter
+qrcode>=7.4                     # QR code for the public link (start_public.bat)

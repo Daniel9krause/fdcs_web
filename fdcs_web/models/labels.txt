@@ -1,0 +1,13 @@
+healthy
+maize_gray_leaf_spot
+maize_leaf_blight
+maize_rust
+red_spider_mite
+tomato_bacterial_spot
+tomato_early_blight
+tomato_late_blight
+tomato_leaf_mold
+tomato_mosaic_virus
+tomato_septoria_leaf_spot
+tomato_target_spot
+tomato_yellow_leaf_curl

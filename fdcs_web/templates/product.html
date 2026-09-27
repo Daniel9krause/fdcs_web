@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon, product_art, severity_tag %}
+{% block title %}{{ p.name }}{% endblock %}
+{% block content %}
+<div class="container page-head"><a href="{{ url_for('store', category=p.category) }}" class="small">← {{ p.category }}</a></div>
+<div class="container">
+  <div class="grid grid-2" style="align-items:start">
+    <div class="card">{{ product_art(p) }}</div>
+    <div class="stack">
+      <span class="tag">{{ p.category }}</span>
+      <h1 style="font-size:2rem">{{ p.name }}</h1>
+      {% set q = price(p) %}
+      <div class="price" style="font-size:1.6rem">{{ q.display }} <small>{{ p.unit }}</small></div>
+      {% if q.usd %}<p class="small muted" style="margin:0">International price US${{ '%g'|format(q.usd) }}, shown in your currency at today's exchange rate. Charged in Ghana cedis (GH₵{{ '%.2f'|format(q.charge_ghs) }}).</p>{% endif %}
+      <p>{{ p.description }}</p>
+      <ul class="checklist">{% for f in p.features %}<li>{{ f }}</li>{% endfor %}</ul>
+      {% if not q.available %}<div class="warn-box">{{ q.reason }}. Change your country at the bottom of the page if you are in Ghana.</div>{% else %}
+      <form method="post" action="{{ url_for('cart_add', pid=p.id) }}" class="controls" style="align-items:end"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        {% if p.category != 'App Plans' %}<div><label for="qty">Quantity</label><input class="qty" type="number" id="qty" name="qty" value="1" min="1" max="{{ p.stock }}"></div>{% endif %}
+        <button class="btn btn-lg">{{ icon('cart', 20) }} {{ 'Get this plan' if p.category == 'App Plans' else 'Add to cart' }}</button>
+      </form>{% endif %}
+      {% if p.category != 'App Plans' %}<p class="small muted">{{ p.stock }} in stock</p>{% endif %}
+      {% if helps %}
+      <div class="card"><h3>Helps control</h3><div class="chips">
+        {% for slug, pest in helps %}<a class="tag" href="{{ url_for('pest_detail', slug=slug) }}">{{ pest.common_name }}</a>{% endfor %}</div></div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

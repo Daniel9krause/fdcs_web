@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Order #{{ order.id }}{% endblock %}
+{% set st = order.status %}
+{% set labels = {'awaiting_payment':'Awaiting payment','payment_submitted':'Payment being checked','paid':'Paid','cash_on_delivery':'Pay on delivery','delivered':'Delivered','cancelled':'Cancelled','confirmed':'Confirmed'} %}
+{% block content %}
+<div class="container page-head center">
+  <div class="feature-icon" style="margin:0 auto 1rem;width:64px;height:64px;border-radius:50%">{{ icon('shield', 32) }}</div>
+  <h1>{{ 'Payment received' if st in ('paid','delivered') else 'Thank you, ' ~ order.customer_name.split()[0] ~ '!' }}</h1>
+  <p class="muted">Order <b>#{{ order.id }}</b> · Reference <b>{{ order.payment_ref }}</b> · Status: <b>{{ labels.get(st, st) }}</b></p>
+  <p class="small muted">Bookmark this page to check your order status later.</p>
+</div>
+<div class="container stack" style="max-width:680px">
+
+  {% if st == 'awaiting_payment' %}
+  <div class="verdict verdict-caution">
+    <div class="v-icon">{{ icon('alert', 30) }}</div>
+    <div>
+      <span class="eyebrow" style="color:inherit;opacity:.75">Complete your payment</span>
+      <h2>Send {{ order.total|money }} by Mobile Money</h2>
+      <dl class="facts" style="margin:.75rem 0">
+        <dt>Send to</dt><dd style="font-size:1.25rem">{{ cfg.MOMO_NUMBER }}</dd>
+        <dt>Network</dt><dd>{{ cfg.MOMO_NETWORK }} (you can send from MTN, Telecel or AirtelTigo)</dd>
+        {% if cfg.MOMO_NAME %}<dt>Account name</dt><dd>{{ cfg.MOMO_NAME }}</dd>{% endif %}
+        <dt>Amount</dt><dd>{{ order.total|money }}</dd>
+        <dt>Reference</dt><dd>{{ order.payment_ref }}</dd>
+      </dl>
+      <ol style="margin:.25rem 0 0;padding-left:1.2rem">
+        <li>Open your Mobile Money menu (or MoMo app) and choose <b>Send money / Transfer</b>.</li>
+        <li>Enter <b>{{ cfg.MOMO_NUMBER }}</b>{% if cfg.MOMO_NAME %} and check the name shows <b>{{ cfg.MOMO_NAME }}</b>{% endif %}.</li>
+        <li>Enter the exact amount and use <b>{{ order.payment_ref }}</b> as the reference.</li>
+        <li>Type the <b>transaction ID</b> from your confirmation SMS below.</li>
+      </ol>
+    </div>
+  </div>
+  <form class="card" method="post"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <h3>I have paid</h3>
+    <div class="field"><label for="momo_txn_id">Transaction ID (from your MoMo SMS)</label><input type="text" id="momo_txn_id" name="momo_txn_id" required maxlength="40"></div>
+    <div class="field"><label for="momo_sender">Number you paid from</label><input type="tel" id="momo_sender" name="momo_sender" value="{{ order.phone }}" required></div>
+    <button class="btn" style="margin-top:1rem">Submit payment details</button>
+  </form>
+  {% elif st == 'payment_submitted' %}
+  <div class="warn-box">We received your transaction ID <b>{{ order.momo_txn_id }}</b> and are checking the payment. We'll call {{ order.phone }} once it's confirmed.</div>
+  {% elif st in ('paid','delivered') %}
+  <div class="flash flash-success">Payment of {{ order.total|money }} confirmed{% if order.paid_at %} on {{ order.paid_at[:10] }}{% endif %}. We'll call {{ order.phone }} to arrange delivery.</div>
+  {% elif st == 'cash_on_delivery' %}
+  <div class="flash flash-success">We'll call {{ order.phone }} to arrange delivery. Please have {{ order.total|money }} ready.</div>
+  {% elif st == 'cancelled' %}
+  <div class="flash flash-error">This order was cancelled. Contact us if you think this is a mistake.</div>
+  {% endif %}
+
+  <div class="card">
+    {% for i in order['items'] %}<div class="summary-row"><span>{{ i.name }} × {{ i.qty }}</span><span>{{ i.shown_as if (order.country and order.country != 'GH') else (i.subtotal|money) }}</span></div>{% endfor %}
+    <div class="summary-row total"><span>Total</span><span>{{ order.display_total or (order.total|money) }}</span></div>
+    {% if order.country and order.country != 'GH' %}<div class="summary-row small"><span>Charged in Ghana cedis</span><span>{{ order.total|money }}</span></div>{% endif %}
+    <p class="small muted">Deliver to: {{ order.address }}</p>
+  </div>
+  <p class="center"><a class="btn" href="{{ url_for('scan') }}">Check a crop</a> <a class="btn btn-outline" href="{{ url_for('store') }}">Continue shopping</a></p>
+</div>
+{% endblock %}

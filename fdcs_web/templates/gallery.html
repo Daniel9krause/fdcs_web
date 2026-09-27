@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon, eat_badge %}
+{% block title %}Crop gallery{% endblock %}
+{% block content %}
+<div class="container page-head">
+  <span class="eyebrow">Image storage</span>
+  <h1>Crop gallery</h1>
+  <p class="muted" style="max-width:720px">{% if is_admin %}All photos from every visitor, organised by crop and by what the app found. Confirmed labels build a verified dataset for retraining the model.{% else %}Every photo you scan or upload is stored here, organised by crop and by what the app found. Confirm or correct labels on any result page to help improve the model.{% endif %}</p>
+  <div class="trust" style="margin-top:1rem">
+    <div><b>{{ counts.total }}</b>images stored</div>
+    <div><b>{{ counts.crops|length }}</b>crops</div>
+    <div><b>{{ counts.verified }}</b>verified labels</div>
+  </div>
+</div>
+
+<div class="container stack">
+  <div class="grid grid-2">
+    <form class="card" method="post" action="{{ url_for('gallery_upload') }}" enctype="multipart/form-data"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <h3 style="display:flex;gap:.4rem;align-items:center">{{ icon('upload', 20) }} Add many photos at once</h3>
+      <p class="small muted" style="margin-top:0">Each photo is analysed and saved under the crop you choose (up to 30 per upload).</p>
+      <div class="field"><label for="g-crop">Crop</label>
+        <select name="crop" id="g-crop" required><option value="">Select crop…</option>
+          {% for c in cfg.CROPS %}<option {{ 'selected' if c == crop }}>{{ c }}</option>{% endfor %}</select></div>
+      <div class="field"><label for="g-files">Photos</label><input type="file" id="g-files" name="images" accept="image/*" multiple required></div>
+      <button class="btn" style="margin-top:1rem">Upload & analyse</button>
+    </form>
+    {% if is_admin %}
+    <div class="card">
+      <h3 style="display:flex;gap:.4rem;align-items:center">{{ icon('book', 20) }} Export images as a dataset</h3>
+      <p class="small muted" style="margin-top:0">Downloads a ZIP with one folder per condition plus <code>metadata.csv</code>, ready for <code>training/train.py</code>.</p>
+      <div class="controls">
+        <a class="btn" href="{{ url_for('gallery_export', verified=1) }}">Verified images only</a>
+        <a class="btn btn-outline" href="{{ url_for('gallery_export', crop=crop) }}">All {{ crop ~ ' ' if crop }}images</a>
+      </div>
+      <p class="small muted" style="margin-bottom:0">Verified images are best for training; unverified ones use the model's own prediction as the label.</p>
+    </div>
+    {% else %}
+    <div class="card">
+      <h3>Your photos are private</h3>
+      <p class="small muted" style="margin-top:0">This gallery shows only the photos taken on this device. Other visitors cannot see them. The shop owner can review photos to improve the AI model.</p>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if counts.crops %}
+  <div>
+    <h2>Browse by crop</h2>
+    <div class="grid grid-4 crop-folders">
+      <a class="card card-link folder {{ 'active' if not crop }}" href="{{ url_for('gallery', label=label, eat=eat) }}">
+        <div class="folder-cover all">{{ icon('grid', 40) }}</div>
+        <b>All crops</b><div class="small muted">{{ counts.total }} images</div></a>
+      {% for c in counts.crops %}
+      <a class="card card-link folder {{ 'active' if crop == c.crop }}" href="{{ url_for('gallery', crop=c.crop, label=label, eat=eat) }}">
+        <div class="folder-cover">{% if c.cover %}<img src="{{ url_for('uploaded', filename=c.cover) }}" alt="" loading="lazy">{% endif %}</div>
+        <b>{{ c.crop }}</b><div class="small muted">{{ c.n }} image{{ '' if c.n == 1 else 's' }} · {{ c.verified or 0 }} verified</div></a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <form method="get" class="filter-bar" style="align-items:center">
+    {% if crop %}<input type="hidden" name="crop" value="{{ crop }}">{% endif %}
+    <select name="label" data-autosubmit style="width:auto">
+      <option value="">All conditions</option>
+      {% for l in counts.labels %}<option value="{{ l.label }}" {{ 'selected' if label == l.label }}>{{ pest_names.get(l.label, 'Other / not listed' if l.label == 'other' else l.label) }} ({{ l.n }})</option>{% endfor %}
+    </select>
+    {% for key, txt in [('', 'Any'), ('safe', 'Safe to eat'), ('caution', 'Eat with care'), ('unsafe', 'Not safe'), ('unknown', "Can't tell")] %}
+      <a href="{{ url_for('gallery', crop=crop, label=label, eat=key or None) }}" class="{{ 'active' if (eat or '') == key }}">{{ txt }}</a>
+    {% endfor %}
+  </form>
+
+  {% if items %}
+  <div class="photo-grid">
+    {% for i in items %}
+    <a class="photo" href="{{ url_for('result', scan_id=i.id) }}">
+      <img src="{{ url_for('uploaded', filename=i.image_file) }}" alt="{{ i.crop or 'Crop' }} photo" loading="lazy">
+      <div class="photo-meta">
+        {% if not i.verified_label and i.category == 'unrecognised' %}<b>Not recognised</b><div class="small muted">closest: {{ pest_names.get(i.label, i.label) }}</div>
+        {% else %}<b>{{ pest_names.get(i.final_label, 'Other / not listed' if i.final_label == 'other' else i.final_label) }}</b>{% endif %}
+        {% if i.verified_label %}<span class="verified" title="Label confirmed by a person">{{ icon('check', 14) }}</span>{% endif %}
+        <div class="small muted">{{ i.crop or 'Unspecified' }} · {{ i.created_at[:10] }}</div>
+        {{ eat_badge(i.eat_status or 'unknown') }}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}<div class="card empty">No images match these filters.</div>{% endif %}
+  {% else %}
+  <div class="card empty"><p>No crop images stored yet.</p><a class="btn" href="{{ url_for('scan') }}">{{ icon('camera', 18) }} Scan your first crop</a></div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "_macros.html" import severity_tag, eat_badge, category_tag %}
+{% block title %}Pests & diseases{% endblock %}
+{% block content %}
+<div class="container page-head">
+  <span class="eyebrow">Knowledge base</span><h1>Pests &amp; diseases</h1>
+  <p class="muted">The organism behind each condition, how to identify and manage it, and whether affected produce is safe to eat. The current model recognises {{ model_labels|length }} of these; ones marked <i>Not in model yet</i> need training photos.</p>
+  <form method="get" style="max-width:420px;margin-top:1rem">{% if active %}<input type="hidden" name="category" value="{{ active }}">{% endif %}
+    <input type="search" name="q" value="{{ q }}" placeholder="Search by name, organism (e.g. fungus, virus) or crop…"></form>
+</div>
+<div class="container">
+  <div class="filter-bar">
+    {% for key, txt in [('', 'All'), ('pest', 'Pests (insects & mites)'), ('disease', 'Diseases (fungi, bacteria, viruses)'), ('healthy', 'Healthy')] %}
+    <a href="{{ url_for('pest_library', category=key or None, q=q or None) }}" class="{{ 'active' if (active or '') == key }}">{{ txt }}</a>
+    {% endfor %}
+  </div>
+  {% if pests %}
+  <div class="grid grid-3">
+    {% for slug, p in pests.items() %}
+    <a class="card card-link" href="{{ url_for('pest_detail', slug=slug) }}">
+      <div style="display:flex;justify-content:space-between;gap:.5rem;align-items:start"><h3 style="margin:0">{{ p.common_name }}</h3>{{ category_tag(p.category) }}</div>
+      {% if p.scientific_name != '-' %}<p class="sci small" style="margin:.3rem 0 .2rem">{{ p.scientific_name }}</p>{% endif %}
+      <p class="small muted" style="margin:0 0 .6rem">{{ p.group }}{% if p.kingdom != '-' %} · {{ p.kingdom }}{% endif %}</p>
+      <p class="small" style="margin:0 0 .6rem">{{ p.description[:130] }}{{ '…' if p.description|length > 130 }}</p>
+      <div class="chips">{{ eat_badge(p.edibility.status) }}{% if p.category != 'healthy' %} {{ severity_tag(p.severity) }}{% endif %}
+        {% if slug not in model_labels %}<span class="tag tag-cat-unrecognised" title="Profile available, but the current model hasn't been trained on photos of this yet">Not in model yet</span>{% endif %}</div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}<div class="card empty">Nothing matches "{{ q }}".</div>{% endif %}
+</div>
+{% endblock %}

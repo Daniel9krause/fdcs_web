@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Scan a crop{% endblock %}
+{% block content %}
+<div class="container page-head">
+  <span class="eyebrow">Pest detection</span>
+  <h1>Check a crop</h1>
+  <p class="muted">Photograph the leaf, stem, fruit, cob or pod up close in good light. You'll find out what's wrong, which organism causes it, and whether the produce is safe to eat.</p>
+</div>
+<div class="container">
+  <form id="scan-form" method="post" enctype="multipart/form-data" class="scan-grid"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <div class="card">
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-mode="camera">{{ icon('camera', 18) }} Camera</button>
+        <button type="button" class="tab" data-mode="upload">{{ icon('upload', 18) }} Upload</button>
+      </div>
+
+      <div class="viewer" id="viewer">
+        <video id="video" playsinline autoplay muted hidden></video>
+        <img id="preview" alt="Selected crop image" hidden>
+        <div class="placeholder" id="placeholder">{{ icon('camera', 48) }}<p>Press <b>Start camera</b> or switch to Upload.</p></div>
+        <div class="loading" id="loading"><div><div class="spinner"></div>Analysing image with the CNN…</div></div>
+      </div>
+
+      <div id="camera-controls" class="controls">
+        <button type="button" class="btn" id="start-cam">{{ icon('camera', 18) }} Start camera</button>
+        <button type="button" class="btn btn-amber" id="snap" disabled>Capture photo</button>
+        <button type="button" class="btn btn-ghost" id="switch-cam" disabled>Switch camera</button>
+        <button type="button" class="btn btn-ghost" id="retake" hidden>Retake</button>
+      </div>
+
+      <div id="upload-controls" hidden style="margin-top:1rem">
+        <label class="dropzone" id="dropzone" for="file">
+          {{ icon('upload', 36) }}
+          <p style="margin:.5rem 0 0"><b>Click to choose</b> or drag an image here</p>
+          <p class="small muted" style="margin:.25rem 0 0">JPG, PNG, WEBP or BMP · up to 12 MB</p>
+        </label>
+        <input type="file" id="file" name="image" accept="image/*" capture="environment" class="visually-hidden">
+      </div>
+      <input type="hidden" name="camera_image" id="camera_image">
+      <canvas id="canvas" hidden></canvas>
+      <p class="small muted" id="cam-hint" style="margin-bottom:0">Tip: on a phone, the Upload tab can also open your camera directly.</p>
+    </div>
+
+    <div class="card">
+      <h3>Scan details <span class="muted small">(optional)</span></h3>
+      <div class="field"><label for="crop">Crop</label>
+        <select name="crop" id="crop"><option value="">Select crop…</option>
+          {% for c in cfg.CROPS %}<option>{{ c }}</option>{% endfor %}
+        </select>
+        <p class="small muted" style="margin:.3rem 0 0">Photos are stored in the crop gallery under this crop.</p></div>
+      <div class="field"><label for="sprayed">Was this crop sprayed with a pesticide in the last 2 weeks?</label>
+        <select name="sprayed" id="sprayed"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Not sure</option></select>
+        <p class="small muted" style="margin:.3rem 0 0">Used for the safe-to-eat check - residues can't be seen in a photo.</p></div>
+      <div class="field"><label for="location">Farm / location</label><input type="text" id="location" name="location" placeholder="e.g. Ejura, Plot B"></div>
+      <div class="field"><label for="notes">Notes</label><textarea id="notes" name="notes" rows="3" placeholder="What did you notice?"></textarea></div>
+      <button class="btn btn-lg" id="analyse" style="width:100%;margin-top:1.25rem" disabled>{{ icon('bug', 20) }} Check crop</button>
+      <p class="small muted" style="margin-bottom:0">The image is analysed by the {{ model_info.backend }} model ({{ model_info.classes }} conditions). Results are guidance; confirm serious outbreaks with an extension officer.</p>
+    </div>
+  </form>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/scan.js') }}"></script>{% endblock %}

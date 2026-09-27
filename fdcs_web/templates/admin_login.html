@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Owner login{% endblock %}
+{% block content %}
+<div class="container page-head" style="max-width:440px"><h1>Owner login</h1></div>
+<div class="container" style="max-width:440px">
+  {% if configured %}
+  <form method="post" class="card"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <div class="field"><label for="password">Admin password</label><input type="password" id="password" name="password" required autofocus style="width:100%;padding:.65rem .8rem;border:1px solid var(--line);border-radius:9px;font:inherit"></div>
+    <button class="btn" style="margin-top:1rem;width:100%">Log in</button>
+  </form>
+  {% else %}
+  <div class="card">
+    <p><b>The admin page is switched off</b> because no password is set.</p>
+    <p class="small">Stop the app and start it again with a password, for example on Windows:</p>
+    <pre style="background:var(--green-50);padding:.75rem;border-radius:8px;overflow-x:auto">set FDCS_ADMIN_PASSWORD=choose-a-strong-password
+python app.py</pre>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

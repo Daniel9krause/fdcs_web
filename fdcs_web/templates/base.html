@@ -1,0 +1,93 @@
+{% from "_macros.html" import icon %}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1b6b3a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="{{ cfg.APP_NAME }}">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="{{ url_for('manifest') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}">
+  <title>{% block title %}{{ cfg.APP_NAME }}{% endblock %} · {{ cfg.APP_NAME }} Crop Health</title>
+  <meta name="description" content="{{ cfg.APP_FULL_NAME }} - photograph a crop to detect pests and diseases, classify the organism, check if the produce is safe to eat, store crop images and buy supplies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32.png') }}">
+</head>
+<body>
+{% if model_info.demo %}
+<div class="demo-banner"><div class="container"><b>Demo mode:</b> no trained model is loaded ({{ model_info.demo_reason }}). Results are simulated. Put your <code>pest_model.tflite</code> in <code>models/</code> and restart.</div></div>
+{% endif %}
+<nav class="nav">
+  <div class="container">
+    <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark" style="color:#fff">{{ icon('leaf', 18) }}</span>{{ cfg.APP_NAME }}</a>
+    <button class="menu-toggle" aria-label="Menu" data-menu-toggle>☰</button>
+    <div class="nav-links">
+      {% set ep = request.endpoint %}
+      <a href="{{ url_for('scan') }}" class="{{ 'active' if ep in ('scan','result') }}">Check crop</a>
+      <a href="{{ url_for('gallery') }}" class="{{ 'active' if ep == 'gallery' }}">Crop gallery</a>
+      <a href="{{ url_for('pest_library') }}" class="{{ 'active' if ep in ('pest_library','pest_detail') }}">Pests &amp; diseases</a>
+      <a href="{{ url_for('history') }}" class="{{ 'active' if ep == 'history' }}">History</a>
+      <a href="{{ url_for('store') }}" class="{{ 'active' if ep in ('store','product') }}">Store</a>
+      <a href="{{ url_for('about') }}" class="{{ 'active' if ep == 'about' }}">About</a>
+      {% if is_admin %}<a href="{{ url_for('admin_orders') }}" class="{{ 'active' if ep and ep.startswith('admin') }}">Owner</a>{% endif %}
+      <a href="{{ url_for('view_cart') }}" class="cart-link {{ 'active' if ep in ('view_cart','checkout') }}" aria-label="Cart">{{ icon('cart', 20) }}{% if cart_count %}<span class="badge-count">{{ cart_count }}</span>{% endif %}</a>
+    </div>
+    <button type="button" class="btn btn-sm install-btn" data-install hidden>{{ icon('upload', 16) }} Install</button>
+  </div>
+</nav>
+
+<div class="install-hint" data-ios-hint hidden>
+  <div class="container"><b>Install {{ cfg.APP_NAME }}:</b> tap the Share button <span aria-hidden="true">⬆︎</span> then <b>Add to Home Screen</b>.
+    <button type="button" class="btn btn-sm btn-ghost" data-dismiss-hint>Close</button></div>
+</div>
+<main>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="container">{% for cat, msg in messages %}<div class="flash flash-{{ cat }}">{{ msg }}</div>{% endfor %}</div>{% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+
+<footer>
+  <div class="container">
+    <div class="grid grid-4">
+      <div>
+        <h4>{{ cfg.APP_NAME }}</h4>
+        <p>{{ cfg.APP_FULL_NAME }}. Snap a photo of your crop to find out what's wrong, which organism causes it, and whether it's safe to eat.</p>
+      </div>
+      <div><h4>Product</h4><ul>
+        <li><a href="{{ url_for('scan') }}">Scan a crop</a></li>
+        <li><a href="{{ url_for('pest_library') }}">Pests &amp; diseases</a></li>
+        <li><a href="{{ url_for('gallery') }}">Crop gallery</a></li>
+        <li><a href="{{ url_for('store', category='App Plans') }}">App plans</a></li>
+        <li><a href="{{ url_for('api_health') }}">API status</a></li></ul></div>
+      <div><h4>Store</h4><ul>
+        <li><a href="{{ url_for('store', category='Traps & Monitoring') }}">Traps & monitoring</a></li>
+        <li><a href="{{ url_for('store', category='Organic Inputs') }}">Organic inputs</a></li>
+        <li><a href="{{ url_for('store', category='Tools') }}">Tools</a></li>
+        <li><a href="{{ url_for('store', category='Storage') }}">Grain storage</a></li></ul></div>
+      <div><h4>Contact</h4><ul>
+        <li>{{ cfg.CONTACT_EMAIL }}</li><li>{{ cfg.CONTACT_PHONE }}</li>
+        <li><a href="{{ url_for('contact') }}">Send a message</a></li>
+        <li>Payments: MoMo {{ cfg.MOMO_NUMBER }}</li>
+        <li><a href="{{ url_for('admin_orders') }}">Owner login</a></li></ul>
+        {% set where = 'footer' %}
+        <form method="post" action="{{ url_for('set_country') }}" class="country-form"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <input type="hidden" name="next" value="{{ request.full_path }}">
+      <label for="country-{{ where }}" class="small">Shopping from</label>
+      <select id="country-{{ where }}" name="country" data-autosubmit>{% for code, c in countries.items() %}<option value="{{ code }}" {{ 'selected' if code == country }}>{{ c[0] }} ({{ c[1] }})</option>{% endfor %}</select>
+      <noscript><button class="btn btn-sm">Change</button></noscript></form></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {{ cfg.APP_NAME }} · Created by {{ cfg.CREATOR }}</span>
+      <span>Model: {{ model_info.backend }} · {{ model_info.classes }} conditions</span>
+    </div>
+  </div>
+</footer>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

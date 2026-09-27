@@ -1,0 +1,71 @@
+{% macro icon(name, size=24) -%}
+<svg width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{%- if name == 'leaf' %}<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.1-6"/>
+{%- elif name == 'camera' %}<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>
+{%- elif name == 'upload' %}<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+{%- elif name == 'bug' %}<path d="m8 2 1.9 1.9M16 2l-1.9 1.9M9 7.1V6a3 3 0 0 1 6 0v1.1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6Z"/><path d="M12 20v-9M6.5 13H3M21 13h-3.5M6 9 3.5 7M18 9l2.5-2M6 17l-3 2M18 17l3 2"/>
+{%- elif name == 'shield' %}<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>
+{%- elif name == 'chart' %}<path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/>
+{%- elif name == 'cart' %}<circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+{%- elif name == 'wifi-off' %}<path d="M2 2l20 20M8.5 16.5a5 5 0 0 1 7 0M2 8.8a15 15 0 0 1 4.2-2.7M10.7 5.1A15 15 0 0 1 22 8.8M5 12.9a10 10 0 0 1 5.2-2.8M16.9 10.5a10 10 0 0 1 2.1 2.4"/><path d="M12 20h.01"/>
+{%- elif name == 'book' %}<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+{%- elif name == 'star' %}<polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/>
+{%- elif name == 'users' %}<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>
+{%- elif name == 'trap' %}<path d="M4 20h16M6 20l2-10h8l2 10"/><path d="M8 10 12 4l4 6"/><circle cx="12" cy="14" r="2"/>
+{%- elif name == 'square' %}<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 3V1"/><circle cx="9" cy="10" r="1"/><circle cx="14" cy="14" r="1"/><circle cx="10" cy="16" r="1"/>
+{%- elif name == 'search' %}<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+{%- elif name == 'grid' %}<path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18"/>
+{%- elif name == 'spray' %}<path d="M3 3h.01M7 5h.01M11 7h.01M3 7h.01M7 9h.01M3 11h.01"/><rect x="15" y="5" width="4" height="4"/><path d="m19 9 2 2v10c0 .6-.4 1-1 1h-6c-.6 0-1-.4-1-1V11l2-2"/><path d="M13 14h8"/>
+{%- elif name == 'drop' %}<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
+{%- elif name == 'history' %}<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l4 2"/>
+{%- elif name == 'sprout' %}<path d="M7 20h10M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8zM14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+{%- elif name == 'flask' %}<path d="M9 3h6M10 3v6L4 19a2 2 0 0 0 1.7 3h12.6A2 2 0 0 0 20 19l-6-10V3"/><path d="M7 15h10"/>
+{%- elif name == 'alert' %}<path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3Z"/><path d="M12 9v4M12 17h.01"/>
+{%- elif name == 'x' %}<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/>
+{%- elif name == 'help' %}<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>
+{%- elif name == 'check' %}<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+{%- elif name == 'dna' %}<path d="M2 15c6.7-6 13.3 0 20-6M2 9c6.7 6 13.3 0 20 6"/><path d="M5 10.5v3M9 12v0M15 12v0M19 10.5v3"/>
+{%- else %}<circle cx="12" cy="12" r="9"/>{% endif %}
+</svg>
+{%- endmacro %}
+
+{% macro severity_tag(level) -%}
+<span class="tag tag-{{ level }}">{{ {'high':'High risk','moderate':'Moderate','low':'Low','none':'Healthy'}.get(level, level|title) }}</span>
+{%- endmacro %}
+
+{% macro product_art(p) -%}
+{% set tints = {'App Plans':('#e6f4ea','#1b6b3a'),'Traps & Monitoring':('#fef3c7','#b45309'),'Tools':('#e0f2fe','#0369a1'),'Organic Inputs':('#f3e8ff','#7e22ce'),'Storage':('#fce7f3','#9d174d')} %}
+{% set t = tints.get(p.category, ('#eef2f0','#1c2521')) %}
+{% if p.image %}<div class="product-art has-photo" style="background:{{ t[0] }}"><img src="{{ url_for('static', filename='img/products/' ~ p.image) }}" alt="{{ p.name }}" loading="lazy"></div>
+{% else %}<div class="product-art" style="background:{{ t[0] }};color:{{ t[1] }}">{{ icon(p.icon, 64) }}</div>{% endif %}
+{%- endmacro %}
+
+{% macro product_card(p) -%}
+<div class="card product-card">
+  <a href="{{ url_for('product', pid=p.id) }}" style="color:inherit">{{ product_art(p) }}</a>
+  <div class="body">
+    <span class="tag">{{ p.category }}</span>
+    <h3 style="margin-top:.5rem"><a href="{{ url_for('product', pid=p.id) }}" style="color:inherit">{{ p.name }}</a></h3>
+    <p class="muted small">{{ p.summary }}</p>
+    {% set q = price(p) %}
+    <div class="price">{{ q.display }} <small>{{ p.unit }}</small></div>
+    {% if q.usd %}<div class="small muted">US${{ '%g'|format(q.usd) }} international price</div>{% endif %}
+  </div>
+  {% if q.available %}
+  <form method="post" action="{{ url_for('cart_add', pid=p.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <input type="hidden" name="next" value="{{ request.full_path }}">
+    <button class="btn" style="width:100%">{{ icon('cart', 18) }} {{ 'Get plan' if p.category == 'App Plans' else 'Add to cart' }}</button>
+  </form>
+  {% else %}<button class="btn btn-outline" style="width:100%" disabled>{{ q.reason }}</button>{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro eat_badge(status) -%}
+{% set m = {'safe':('safe','check','Safe to eat'),'caution':('caution','alert','Eat with care'),'unsafe':('unsafe','x','Not safe to eat'),'unknown':('unknown','help',"Can't tell")} %}
+{% set v = m.get(status, m['unknown']) %}
+<span class="eat eat-{{ v[0] }}">{{ icon(v[1], 14) }} {{ v[2] }}</span>
+{%- endmacro %}
+
+{% macro category_tag(cat) -%}
+<span class="tag tag-cat-{{ cat }}">{{ {'pest':'Pest','disease':'Disease','healthy':'Healthy','unrecognised':'Not recognised'}.get(cat, cat|title) }}</span>
+{%- endmacro %}

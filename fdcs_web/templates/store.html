@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% from "_macros.html" import product_card with context %}
+{% block title %}Store{% endblock %}
+{% block content %}
+<div class="container page-head">
+  <span class="eyebrow">{{ cfg.APP_NAME }} Store</span><h1>App plans and pest-control supplies</h1>
+  <p class="muted">Get the FDCS app for your farm or cooperative, and the traps, tools and organic inputs recommended in your scan results. Supplies are delivered across Ghana; app plans can be bought from any country.</p>
+  {% set where = 'store' %}
+  <div class="card" style="margin-top:1rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:space-between">
+    <div>{% if country == home %}Prices in <b>Ghana cedis (GH₵)</b>. Pay by Mobile Money to {{ cfg.MOMO_NUMBER }} or cash on delivery.
+      {% else %}Prices shown in <b>{{ countries[country][1] }}</b> at today's exchange rate. App plans only — supplies are delivered in Ghana. You'll be charged the equivalent in Ghana cedis.{% endif %}</div>
+    <form method="post" action="{{ url_for('set_country') }}" class="country-form"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <input type="hidden" name="next" value="{{ request.full_path }}">
+      <label for="country-{{ where }}" class="small">Shopping from</label>
+      <select id="country-{{ where }}" name="country" data-autosubmit>{% for code, c in countries.items() %}<option value="{{ code }}" {{ 'selected' if code == country }}>{{ c[0] }} ({{ c[1] }})</option>{% endfor %}</select>
+      <noscript><button class="btn btn-sm">Change</button></noscript></form>
+  </div>
+</div>
+<div class="container">
+  <div class="filter-bar">
+    <a href="{{ url_for('store') }}" class="{{ 'active' if not active }}">All</a>
+    {% for c in categories %}<a href="{{ url_for('store', category=c) }}" class="{{ 'active' if active == c }}">{{ c }}</a>{% endfor %}
+  </div>
+  <div class="grid grid-4">{% for p in products %}{{ product_card(p) }}{% endfor %}</div>
+</div>
+{% endblock %}

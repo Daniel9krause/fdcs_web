@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon, product_card, severity_tag, eat_badge, category_tag with context %}
+{% block title %}Crop pest detection{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <div>
+      <span class="eyebrow">AI crop health for Ghanaian farms</span>
+      <h1>Is your crop healthy — and is it safe to eat?</h1>
+      <p class="lead">Take or upload a photo of a tomato or maize leaf. {{ cfg.APP_NAME }}'s neural network tells you what's wrong, classifies the pest or disease organism, says whether the produce is safe to eat, and stores the photo in your crop gallery.</p>
+      <div class="hero-actions">
+        <a class="btn btn-lg" href="{{ url_for('scan') }}">{{ icon('camera', 20) }} Check a crop now</a>
+        <a class="btn btn-lg btn-outline" href="{{ url_for('store', category='App Plans') }}">Get the app</a>
+      </div>
+      <div class="trust">
+        <div><b>{{ model_info.classes - 1 }}</b>pests &amp; diseases</div>
+        <div><b>MobileNetV2</b>CNN model</div>
+        <div><b>{{ stats.total }}</b>crop images stored</div>
+        <div><b>Offline</b>Android app</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 400 300" role="img" aria-label="Illustration of a maize leaf with a detected pest highlighted">
+        <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f5a40"/><stop offset="1" stop-color="#0f3d2e"/></linearGradient></defs>
+        <rect width="400" height="300" fill="url(#sky)"/>
+        <path d="M-10 290 C 90 220, 170 150, 410 40 L 410 90 C 220 170, 120 240, 40 310 Z" fill="#4caf50"/>
+        <path d="M-10 290 C 90 220, 170 150, 410 40" stroke="#a5d6a7" stroke-width="3" fill="none"/>
+        <path d="M60 330 C 140 240, 250 190, 420 170 L 420 210 C 260 220, 170 260, 110 330 Z" fill="#388e3c"/>
+        <g fill="#2e7d32" opacity=".9"><ellipse cx="220" cy="128" rx="10" ry="6"/><ellipse cx="236" cy="120" rx="6" ry="4"/><ellipse cx="210" cy="140" rx="5" ry="3"/></g>
+        <g transform="translate(222 124) rotate(-25)"><rect x="-26" y="-6" width="52" height="12" rx="6" fill="#7a6a3a"/><circle cx="-26" cy="0" r="6" fill="#4a3f22"/><g fill="#3b3218"><circle cx="-12" cy="0" r="1.5"/><circle cx="0" cy="0" r="1.5"/><circle cx="12" cy="0" r="1.5"/></g></g>
+        <rect x="180" y="92" width="88" height="66" rx="6" fill="none" stroke="#f59e0b" stroke-width="3"/>
+        <rect x="180" y="70" width="140" height="22" rx="4" fill="#f59e0b"/>
+        <text x="188" y="86" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#1a1a1a">Fall Armyworm 94%</text>
+      </svg>
+      <div class="hero-chip" style="left:-24px;bottom:28px">{{ severity_tag('high') }}<b>Spodoptera frugiperda</b><span class="muted small">Insect · Lepidoptera</span></div>
+      <div class="hero-chip" style="right:-18px;top:-18px">{{ eat_badge('caution') }}<b style="margin-top:.3rem">Remove damaged kernels</b><span class="muted small">Discard any mouldy cobs</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">How it works</span><h2>One photo, four answers</h2></div>
+    <div class="grid grid-4 steps">
+      <div class="card step"><h3>Capture or upload</h3><p class="muted">Use your phone or laptop camera in the browser, or upload photos you took in the field — one at a time or many at once.</p></div>
+      <div class="card step"><h3>What's wrong?</h3><p class="muted">A MobileNetV2 CNN checks the whole image and overlapping sections to detect pests and diseases and mark where they are.</p></div>
+      <div class="card step"><h3>Which organism?</h3><p class="muted">Get the organism's name and classification — insect, mite, fungus, water mould, bacterium or virus — with its kingdom and family.</p></div>
+      <div class="card step"><h3>Safe to eat?</h3><p class="muted">A clear verdict — safe, eat with care, or not safe — with what to cut away or throw out, plus treatment advice and supplies.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow" style="color:#86efac">Features</span><h2>Built for real fields, not just the lab</h2></div>
+    <div class="grid grid-3">
+      {% for ic, t, d in [
+        ('bug','Pests and diseases','Detects insects, mites, fungi, water moulds, bacteria and viruses, and boxes where on the crop they are.'),
+        ('shield','Safe-to-eat check','Flags dangerous conditions like aflatoxin mould and tells you what to cut away, wash or throw out.'),
+        ('grid','Crop image gallery','Every photo is stored and organised by crop — tomatoes, maize, cassava and more — and can be exported as a dataset.'),
+        ('book','Organism profiles','Scientific name, kingdom, family, crops affected, lifecycle and identification tips for every condition.'),
+        ('wifi-off','Works offline on Android','The same TFLite model runs on-device in the FDCS Android app, with no data needed.'),
+        ('chart','Image quality checks','Warns you when a photo is too dark, blurry or small to trust the result.')] %}
+      <div><div class="feature-icon" style="background:#1d5a43;color:#86efac">{{ icon(ic) }}</div><h3 style="color:#fff">{{ t }}</h3><p class="muted">{{ d }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">What it recognises</span><h2>Pests and diseases the model can identify</h2>
+      <p class="muted">Conditions of tomato, maize, cassava, cocoa, cabbage and other crops grown in Ghana.</p></div>
+    {% for cat, title in [('pest', 'Pests — insects & mites'), ('disease', 'Diseases — fungi, water moulds, bacteria & viruses')] %}
+    {% if pests.items()|selectattr('1.category', 'equalto', cat)|selectattr('0', 'in', model_labels)|list %}
+    <h3 style="margin:1.5rem 0 1rem">{{ title }}</h3>
+    <div class="grid grid-4">
+      {% for slug, p in pests.items() if p.category == cat and slug in model_labels %}
+      <a class="card card-link" href="{{ url_for('pest_detail', slug=slug) }}">
+        <h3 style="margin:0">{{ p.common_name }}</h3>
+        <p class="sci small" style="margin:.3rem 0">{{ p.scientific_name }}</p>
+        <p class="small muted" style="margin:0 0 .5rem">{{ p.group }} · {{ p.crops[:2]|join(', ') }}</p>
+        {{ eat_badge(p.edibility.status) }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    <p class="center" style="margin-top:2rem"><a class="btn btn-outline" href="{{ url_for('pest_library') }}">Full pests &amp; diseases library</a> <a class="btn btn-outline" href="{{ url_for('gallery') }}">{{ icon('grid', 18) }} Open the crop gallery</a></p>
+  </div>
+</section>
+
+<section style="background:var(--green-50)">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">Pricing</span><h2>Choose how you use {{ cfg.APP_NAME }}</h2></div>
+    <div class="grid grid-3">
+      {% for p in plans %}
+      <div class="card plan-card {{ 'featured' if p.id == 'plan-pro' }}">
+        <div class="feature-icon">{{ icon(p.icon) }}</div>
+        <h3>{{ p.name }}</h3>
+        {% set q = price(p) %}
+        <div class="price">{{ q.display }} <small>{{ p.unit }}</small></div>
+        {% if q.usd %}<div class="small muted">US${{ '%g'|format(q.usd) }} international price</div>{% endif %}
+        <ul class="checklist">{% for f in p.features %}<li>{{ f }}</li>{% endfor %}</ul>
+        <form method="post" action="{{ url_for('cart_add', pid=p.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button class="btn {{ '' if p.id == 'plan-pro' else 'btn-outline' }}" style="width:100%">Choose plan</button></form>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:1rem" class="section-head" >
+      <div><span class="eyebrow">Store</span><h2>Pest-control supplies</h2></div>
+    </div>
+    <div class="grid grid-4">{% for p in featured %}{{ product_card(p) }}{% endfor %}</div>
+    <p class="center" style="margin-top:2rem"><a class="btn btn-outline" href="{{ url_for('store') }}">Visit the store</a></p>
+  </div>
+</section>
+{% endblock %}

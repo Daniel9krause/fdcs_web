@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Checkout{% endblock %}
+{% block content %}
+<div class="container page-head"><h1>Checkout</h1></div>
+<div class="container">
+  <form method="post" class="scan-grid"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <div class="card">
+      <h3>Delivery details</h3>
+      <div class="field"><label for="name">Full name *</label><input type="text" id="name" name="name" value="{{ form.get('name','') }}" required></div>
+      <div class="field"><label for="phone">Phone number *</label><input type="tel" id="phone" name="phone" value="{{ form.get('phone','') }}" placeholder="024 000 0000" required></div>
+      <div class="field"><label for="email">Email {% if 'paystack' in methods %}(needed for online payment){% endif %}</label><input type="email" id="email" name="email" value="{{ form.get('email','') }}"></div>
+      <div class="field"><label for="address">{{ 'Delivery address or GhanaPost GPS' if country == home else 'Your address (town, country)' }} *</label><textarea id="address" name="address" rows="2" required>{{ form.get('address','') }}</textarea></div>
+      {% if total > 0 %}
+      <h3 style="margin-top:1.5rem">Payment</h3>
+      {% set chosen = form.get('payment_method', methods[0]) %}
+      {% if 'paystack' in methods %}
+      <label class="pay-option"><input type="radio" name="payment_method" value="paystack" {{ 'checked' if chosen == 'paystack' }}>
+        <span>Pay now with Mobile Money or card<br><span class="small muted">Secure payment through Paystack. You'll get a MoMo prompt on your phone to approve (MTN, Telecel or AirtelTigo).</span></span></label>
+      {% endif %}
+      <label class="pay-option"><input type="radio" name="payment_method" value="momo" {{ 'checked' if chosen == 'momo' }}>
+        <span>Send Mobile Money to {{ cfg.MOMO_NUMBER }}<br><span class="small muted">{% if country == home %}After placing your order you'll see the exact amount and a reference to use. Works from any network.{% else %}Send GH₵{{ '%.2f'|format(total) }} to this Ghana MoMo number using a money-transfer app that pays into Mobile Money.{% endif %}</span></span></label>
+      {% if 'cod' in methods %}
+      <label class="pay-option"><input type="radio" name="payment_method" value="cod" {{ 'checked' if chosen == 'cod' }}>
+        <span>Cash on delivery<br><span class="small muted">Pay when your items arrive (physical products only).</span></span></label>{% endif %}
+      {% endif %}
+    </div>
+    <div class="card">
+      <h3>Order summary</h3>
+      {% for l in lines %}<div class="summary-row"><span>{{ l.product.name }} × {{ l.qty }}</span><span>{{ l.subtotal_display }}</span></div>{% endfor %}
+      <div class="summary-row total"><span>Total</span><span>{{ display_total }}</span></div>
+      {% if country != home and total %}<div class="summary-row small"><span>Charged in Ghana cedis</span><span>GH₵{{ '%.2f'|format(total) }}</span></div>{% endif %}
+      <button class="btn btn-lg" style="width:100%;margin-top:1rem">Place order</button>
+      <p class="small muted">All payments go to {{ cfg.APP_NAME }}'s Mobile Money account {{ cfg.MOMO_NUMBER }}{% if cfg.MOMO_NAME %} ({{ cfg.MOMO_NAME }}){% endif %}.</p>
+    </div>
+  </form>
+</div>
+{% endblock %}

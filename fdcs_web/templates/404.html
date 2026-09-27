@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Not found{% endblock %}
+{% block content %}
+<div class="container empty"><h1>Page not found</h1><p>That page, scan or product doesn't exist.</p>
+  <a class="btn" href="{{ url_for('index') }}">Go home</a></div>
+{% endblock %}

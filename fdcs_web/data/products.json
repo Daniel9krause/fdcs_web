@@ -1,0 +1,263 @@
+[
+ {
+  "id": "plan-free",
+  "category": "App Plans",
+  "name": "FDCS Farmer (Free)",
+  "price": 0,
+  "unit": "forever",
+  "icon": "leaf",
+  "summary": "Scan crops, find out what's wrong and whether the produce is safe to eat.",
+  "description": "Everything a smallholder farmer needs: camera and upload scanning, pest and disease identification with organism classification, a safe-to-eat verdict, treatment advice and 30 days of scan history.",
+  "features": [
+   "Unlimited scans",
+   "23 pests & diseases",
+   "Safe-to-eat check",
+   "Treatment advice",
+   "30-day history"
+  ],
+  "stock": 999,
+  "price_usd_intl": 0
+ },
+ {
+  "id": "plan-pro",
+  "category": "App Plans",
+  "name": "FDCS Pro Farmer",
+  "price": 250,
+  "unit": "per month",
+  "icon": "star",
+  "summary": "Offline Android app, unlimited history and PDF scan reports.",
+  "description": "The Android app with the on-device TFLite model so you can scan in the field without data, unlimited history, exportable reports and priority support.",
+  "features": [
+   "Offline Android app",
+   "Unlimited scans & history",
+   "Safe-to-eat checks",
+   "PDF reports",
+   "Priority support"
+  ],
+  "stock": 999,
+  "price_usd_intl": 35
+ },
+ {
+  "id": "plan-coop",
+  "category": "App Plans",
+  "name": "FDCS Cooperative",
+  "price": 1500,
+  "unit": "per month",
+  "icon": "users",
+  "summary": "For farmer groups and extension officers managing many farms.",
+  "description": "Up to 50 farmer accounts, a shared outbreak dashboard, farm-level reports and training sessions for extension officers.",
+  "features": [
+   "Up to 50 accounts",
+   "Outbreak dashboard",
+   "Farm reports",
+   "Training"
+  ],
+  "stock": 999,
+  "price_usd_intl": 150
+ },
+ {
+  "id": "pheromone-trap-faw",
+  "category": "Traps & Monitoring",
+  "name": "Fall Armyworm Pheromone Trap",
+  "price": 85,
+  "unit": "per trap + 2 lures",
+  "icon": "trap",
+  "summary": "Catches male moths to warn you before an outbreak.",
+  "description": "Funnel trap with species-specific lures. Place 1-2 traps per acre at crop height to track moth flights and time your scouting.",
+  "features": [
+   "2 lures included",
+   "Reusable funnel",
+   "Covers 1 acre"
+  ],
+  "stock": 120,
+  "price_source": "estimate"
+ },
+ {
+  "id": "pheromone-trap-tuta",
+  "category": "Traps & Monitoring",
+  "name": "Tuta absoluta Delta Trap",
+  "price": 80,
+  "unit": "per trap + 2 lures",
+  "icon": "trap",
+  "summary": "Monitoring and mass trapping of tomato leafminer moths.",
+  "description": "Delta trap with sticky insert and Tuta absoluta lure for tomato fields and greenhouses.",
+  "features": [
+   "Sticky inserts",
+   "2 lures",
+   "Weatherproof"
+  ],
+  "stock": 90,
+  "price_source": "estimate"
+ },
+ {
+  "id": "yellow-sticky-traps",
+  "category": "Traps & Monitoring",
+  "name": "Yellow Sticky Traps (pack of 20)",
+  "price": 90,
+  "unit": "pack",
+  "icon": "square",
+  "summary": "Attract and catch whiteflies, aphids and leafminer adults.",
+  "description": "Double-sided yellow sticky cards, 20 x 25 cm, for early detection of flying pests. Hang just above the crop canopy.",
+  "features": [
+   "20 cards",
+   "Double-sided",
+   "Weather resistant glue"
+  ],
+  "stock": 200,
+  "price_source": "Jiji Ghana: 10-packs GH₵35-60 (Sep 2026)"
+ },
+ {
+  "id": "blue-sticky-traps",
+  "category": "Traps & Monitoring",
+  "name": "Blue Sticky Traps (pack of 20)",
+  "price": 90,
+  "unit": "pack",
+  "icon": "square",
+  "summary": "Best colour for monitoring thrips.",
+  "description": "Double-sided blue sticky cards for thrips monitoring in onion, cowpea, tomato and pepper.",
+  "features": [
+   "20 cards",
+   "Double-sided",
+   "Thrips-attractive blue"
+  ],
+  "stock": 150,
+  "price_source": "Jiji Ghana: 10-packs GH₵35-60 (Sep 2026)"
+ },
+ {
+  "id": "hand-lens",
+  "category": "Tools",
+  "name": "20x Field Hand Lens",
+  "price": 150,
+  "unit": "each",
+  "icon": "search",
+  "summary": "See mites, thrips and eggs clearly in the field.",
+  "description": "Folding 20x magnifier with LED light, essential for identifying mites, young larvae and egg masses.",
+  "features": [
+   "20x magnification",
+   "LED light",
+   "Pocket size"
+  ],
+  "stock": 80,
+  "price_source": "Jiji Ghana: GH₵90-200 (Sep 2026)"
+ },
+ {
+  "id": "insect-net",
+  "category": "Tools",
+  "name": "Insect-Proof Nursery Net",
+  "price": 350,
+  "unit": "10 m x 2 m roll",
+  "icon": "grid",
+  "summary": "Protects seedlings from whiteflies, moths and aphids.",
+  "description": "Fine 50-mesh UV-stabilised netting for nurseries and small plots. Keeps out whitefly, leafminer moths and aphids while allowing air flow.",
+  "features": [
+   "50 mesh",
+   "UV-stabilised",
+   "3+ seasons"
+  ],
+  "stock": 40,
+  "price_source": "estimate (fibre/aluminium insect nets GH₵80-600 on Jiji)"
+ },
+ {
+  "id": "knapsack-sprayer",
+  "category": "Tools",
+  "name": "16 L Knapsack Sprayer",
+  "price": 330,
+  "unit": "each",
+  "icon": "spray",
+  "summary": "Reliable manual sprayer with adjustable nozzle.",
+  "description": "16 litre piston knapsack sprayer with padded straps, pressure chamber and cone and fan nozzles.",
+  "features": [
+   "16 L tank",
+   "2 nozzles",
+   "Padded straps"
+  ],
+  "stock": 35,
+  "price_source": "Supply Master: TOTAL 16L GH₵330; Jiji GH₵159-380 (Sep 2026)"
+ },
+ {
+  "id": "ppe-kit",
+  "category": "Tools",
+  "name": "Spraying Safety (PPE) Kit",
+  "price": 450,
+  "unit": "kit",
+  "icon": "shield",
+  "summary": "Gloves, goggles, mask and apron for safe spraying.",
+  "description": "Nitrile gloves, splash goggles, respirator mask with filters and a waterproof apron. Always wear protection when handling any pesticide, including organic ones.",
+  "features": [
+   "Nitrile gloves",
+   "Goggles",
+   "Respirator",
+   "Apron"
+  ],
+  "stock": 60,
+  "price_source": "estimate (3M half-face respirator alone GH₵270 on Jiji)"
+ },
+ {
+  "id": "neem-oil",
+  "category": "Organic Inputs",
+  "name": "Cold-Pressed Neem Oil (1 L)",
+  "price": 90,
+  "unit": "1 litre",
+  "icon": "drop",
+  "summary": "Botanical spray for aphids, whiteflies, mites and caterpillars.",
+  "description": "Cold-pressed neem seed oil. Mix with water and a little soap as directed; spray in the evening on both sides of leaves.",
+  "features": [
+   "Cold-pressed",
+   "Low toxicity",
+   "Makes ~200 L spray"
+  ],
+  "stock": 110,
+  "price_source": "Jiji Ghana: 1 L GH₵90 (Sep 2026)"
+ },
+ {
+  "id": "bt-biopesticide",
+  "category": "Organic Inputs",
+  "name": "Bt Biopesticide (500 g)",
+  "price": 180,
+  "unit": "500 g",
+  "icon": "drop",
+  "summary": "Bacillus thuringiensis for caterpillar pests.",
+  "description": "Bacterial biopesticide effective against young caterpillars such as fall armyworm, diamondback moth and Tuta absoluta. Safe for bees and natural enemies when used as directed.",
+  "features": [
+   "Caterpillar-specific",
+   "Bee-friendly",
+   "Short pre-harvest interval"
+  ],
+  "stock": 70,
+  "price_source": "estimate"
+ },
+ {
+  "id": "hermetic-bags",
+  "category": "Storage",
+  "name": "Hermetic Grain Storage Bags (5 pack)",
+  "price": 180,
+  "unit": "5 x 50 kg bags",
+  "icon": "shield",
+  "summary": "Airtight triple-layer bags that stop weevils and mould in stored grain.",
+  "description": "Triple-layer airtight bags for maize, groundnut and beans. Starving insects of oxygen stops weevil damage, and keeping grain dry prevents aflatoxin mould. Dry grain below 13% moisture before bagging.",
+  "features": [
+   "Holds 50 kg each",
+   "No chemicals needed",
+   "Reusable 2-3 seasons"
+  ],
+  "stock": 150,
+  "price_source": "estimate"
+ },
+ {
+  "id": "moisture-meter",
+  "category": "Storage",
+  "name": "Digital Grain Moisture Meter",
+  "price": 750,
+  "unit": "each",
+  "icon": "drop",
+  "summary": "Check grain is dry enough (below 13%) to store safely.",
+  "description": "Handheld meter for maize, rice, groundnut and beans. Grain stored above about 13% moisture can grow aflatoxin-producing mould; this tells you when it's safe to bag.",
+  "features": [
+   "Multiple grain settings",
+   "Instant reading",
+   "Battery powered"
+  ],
+  "stock": 25,
+  "price_source": "Jiji Ghana: GH₵450-1,050 (Sep 2026)"
+ }
+]

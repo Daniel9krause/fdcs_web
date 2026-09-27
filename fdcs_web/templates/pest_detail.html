@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon, severity_tag, product_card, eat_badge, category_tag with context %}
+{% block title %}{{ pest.common_name }}{% endblock %}
+{% block content %}
+<div class="container page-head">
+  <a href="{{ url_for('pest_library') }}" class="small">← Pests &amp; diseases</a>
+  <h1 style="margin-top:.5rem">{{ pest.common_name }}</h1>
+  {% if pest.scientific_name != '-' %}<p class="sci">{{ pest.scientific_name }}</p>{% endif %}
+  <div class="chips">{{ category_tag(pest.category) }} {% if pest.category != 'healthy' %}{{ severity_tag(pest.severity) }}{% endif %} {{ eat_badge(pest.edibility.status) }}</div>
+</div>
+<div class="container stack">
+  {% set ed = pest.edibility %}
+  <div class="verdict verdict-{{ ed.status }}">
+    <div class="v-icon">{{ icon({'safe':'check','caution':'alert','unsafe':'x'}.get(ed.status, 'help'), 34) }}</div>
+    <div><span class="eyebrow" style="color:inherit;opacity:.75">Produce from affected crops</span>
+      <h2>{{ verdicts[ed.status].title }}</h2><p style="margin:0">{{ ed.reason }}</p>
+      <ul>{% for a in ed.advice %}<li>{{ a }}</li>{% endfor %}</ul>
+      <p class="note">If the crop was sprayed recently, wait for the pre-harvest interval on the product label before eating.</p></div>
+  </div>
+  <div class="grid grid-2">
+    <div class="card"><h3>Overview</h3><p>{{ pest.description }}</p>
+      <dl class="facts"><dt>Organism type</dt><dd>{{ pest.organism_type }}</dd>
+        <dt>Kingdom</dt><dd>{{ pest.kingdom }}</dd><dt>Group</dt><dd>{{ pest.group }}</dd>
+        <dt>Order / family</dt><dd>{{ pest.order }}</dd>
+        <dt>Crops</dt><dd>{{ pest.crops|join(', ') }}</dd><dt>Model label</dt><dd><code>{{ slug }}</code></dd></dl>
+      {% if pest.taxonomy != '-' %}<div class="taxonomy">{{ pest.taxonomy }}</div>{% endif %}</div>
+    <div class="card list"><h3>Identification</h3><ul>{% for i in pest.identification %}<li>{{ i }}</li>{% endfor %}</ul>
+      <h3 style="margin-top:1rem">{{ 'Lifecycle' if pest.category == 'pest' else 'How it spreads' }}</h3><p style="margin:0">{{ pest.lifecycle }}</p></div>
+  </div>
+  <div class="card list"><h3>Symptoms</h3><ul>{% for s in pest.symptoms %}<li>{{ s }}</li>{% endfor %}</ul></div>
+  <div class="card">
+    <h3>Integrated management</h3>
+    <div class="grid grid-3 mgmt">
+      <div><h4>{{ icon('sprout', 20) }} Cultural</h4><ul>{% for m in pest.management.cultural %}<li>{{ m }}</li>{% endfor %}</ul></div>
+      <div><h4>{{ icon('leaf', 20) }} Biological</h4><ul>{% for m in pest.management.biological %}<li>{{ m }}</li>{% endfor %}</ul></div>
+      <div><h4>{{ icon('flask', 20) }} Chemical (last resort)</h4><ul>{% for m in pest.management.chemical %}<li>{{ m }}</li>{% endfor %}</ul></div>
+    </div>
+  </div>
+  {% if recommended %}<div><h2>Recommended supplies</h2><div class="grid grid-4">{% for p in recommended %}{{ product_card(p) }}{% endfor %}</div></div>{% endif %}
+  <p><a class="btn" href="{{ url_for('scan') }}">{{ icon('camera', 18) }} Check a crop</a>
+     <a class="btn btn-outline" href="{{ url_for('gallery', label=slug) }}">See stored photos of this</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon, severity_tag, product_card, eat_badge, category_tag with context %}
+{% set ed = r.get('edibility') or {'status':'unknown','title':"Can't tell from this photo",'reason':'This scan was made before the food-safety check existed.','advice':[],'note':''} %}
+{% set cat = r.get('category', pest.get('category', 'unknown')) %}
+{% set confirmed = scan.verified_label and scan.verified_label != 'other' %}
+{% set recognised = cat != 'unrecognised' %}
+{% block title %}Result: {{ pest.common_name if recognised else 'Not recognised' }}{% endblock %}
+{% block content %}
+<div class="container page-head">
+  <a href="{{ url_for('scan') }}" class="small">← New scan</a>
+  <span class="muted small"> · Scan #{{ scan.id }} · {{ scan.created_at.replace('T', ' ') }}{% if scan.crop %} · {{ scan.crop }}{% endif %}{% if scan.location %} · {{ scan.location }}{% endif %}</span>
+</div>
+<div class="container stack">
+  {% if r.is_demo %}<div class="warn-box"><b>Simulated result.</b> The app is in demo mode, so this is not a real prediction and the food-safety verdict below is only a demonstration.</div>{% endif %}
+  {% for w in r.warnings %}<div class="warn-box">{{ w }}</div>{% endfor %}
+
+  {# ---------- 1. Is it safe to eat? ---------- #}
+  {% set vic = {'safe':'check','caution':'alert','unsafe':'x'}.get(ed.status, 'help') %}
+  <div class="verdict verdict-{{ ed.status }}">
+    <div class="v-icon">{{ icon(vic, 34) }}</div>
+    <div>
+      <span class="eyebrow" style="color:inherit;opacity:.75">Is the produce safe to eat?</span>
+      <h2>{{ ed.title }}</h2>
+      <p style="margin:0">{{ ed.reason }}</p>
+      {% if ed.advice %}<ul>{% for a in ed.advice %}<li>{{ a }}</li>{% endfor %}</ul>{% endif %}
+      {% if ed.note %}<p class="note">{{ ed.note }}</p>{% endif %}
+    </div>
+  </div>
+
+  {# ---------- 2. What's wrong + organism classification ---------- #}
+  <div class="result-hero">
+    <div class="card">
+      <div class="img-toggle">
+        <button type="button" class="btn btn-sm" data-img="{{ url_for('uploaded', filename=scan.annotated_file) }}">Detections</button>
+        <button type="button" class="btn btn-sm btn-outline" data-img="{{ url_for('uploaded', filename=scan.image_file) }}">Original</button>
+      </div>
+      <img id="result-img" src="{{ url_for('uploaded', filename=scan.annotated_file) }}" alt="Scanned crop with affected regions marked" style="border-radius:10px;width:100%">
+      <p class="small muted" style="margin-bottom:0">{{ r.detections|length }} affected region{{ '' if r.detections|length == 1 else 's' }} marked · {{ (r.affected_ratio * 100)|round|int }}% of the image flagged · saved to the <a href="{{ url_for('gallery', crop=scan.crop or None) }}">crop gallery</a></p>
+    </div>
+
+    <div class="stack">
+      <div class="card">
+        <span class="eyebrow">What's wrong with the crop</span>
+        {% if confirmed %}<p class="small" style="margin:.2rem 0 0;color:var(--green-700)">{{ icon('check', 14) }} Confirmed by a person{% if scan.verified_label != scan.label %} (model guessed {{ pest_names.get(scan.label, scan.label) }}){% endif %}</p>{% endif %}
+        {% if recognised %}
+          <div class="diag-name">{{ pest.common_name }}</div>
+          {% if pest.scientific_name != '-' %}<div class="sci">{{ pest.scientific_name }}</div>{% endif %}
+          <div class="chips" style="margin:.75rem 0">{{ category_tag(cat) }} {% if not confirmed %}{{ severity_tag(r.severity) }} {% endif %}{{ eat_badge(ed.status) }}</div>
+        {% else %}
+          <div class="diag-name">Not recognised</div>
+          <p class="muted" style="margin:.25rem 0">The model isn't confident. Closest match: <b>{{ pest.common_name }}</b>. This crop or condition may not be one it was trained on.</p>
+          <div class="chips" style="margin:.75rem 0">{{ category_tag('unrecognised') }} {{ eat_badge('unknown') }}</div>
+        {% endif %}
+        <div class="small muted">Model confidence{% if confirmed %} (in its own guess){% endif %}</div>
+        <div class="prob-row"><div class="meter"><span style="width:{{ (r.confidence*100)|round(1) }}%"></span></div><b>{{ (r.confidence*100)|round(1) }}%</b></div>
+      </div>
+
+      {% if recognised and cat != 'healthy' %}
+      <div class="card">
+        <h3 style="display:flex;align-items:center;gap:.4rem">{{ icon('dna', 20) }} Organism classification</h3>
+        <dl class="facts">
+          <dt>Organism</dt><dd>{{ pest.common_name }}</dd>
+          <dt>Scientific name</dt><dd><i>{{ pest.scientific_name }}</i></dd>
+          <dt>Type</dt><dd>{{ pest.organism_type }}</dd>
+          <dt>Kingdom</dt><dd>{{ pest.get('kingdom', '-') }}</dd>
+          <dt>Group</dt><dd>{{ pest.get('group', '-') }}</dd>
+          <dt>Order / family</dt><dd>{{ pest.order }}</dd>
+          <dt>Crops affected</dt><dd>{{ pest.crops|join(', ') }}</dd>
+        </dl>
+        {% if pest.get('taxonomy', '-') != '-' %}<div class="taxonomy">{{ pest.taxonomy }}</div>{% endif %}
+      </div>
+      {% endif %}
+
+      <div class="card">
+        <h3>Top predictions</h3>
+        {% for t in r.top_k %}
+        <div class="small">{{ pest_names.get(t.label, t.label) }}</div>
+        <div class="prob-row"><div class="meter"><span style="width:{{ (t.confidence*100)|round(1) }}%;{{ '' if loop.first else 'background:#9ccbad' }}"></span></div><span class="small">{{ (t.confidence*100)|round(1) }}%</span></div>
+        {% endfor %}
+      </div>
+
+      <form class="card" method="post" action="{{ url_for('verify_scan', scan_id=scan.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        <h3>Is this diagnosis right?</h3>
+        <p class="small muted" style="margin-top:0">Your answer labels this photo in the crop gallery so it can be used to retrain and improve the model.</p>
+        {% if scan.verified_label %}<p class="small"><b>Confirmed as:</b> {{ pest_names.get(scan.verified_label, scan.verified_label) }}</p>{% endif %}
+        <div class="field"><label for="verified_label">Correct condition</label>
+          <select name="verified_label" id="verified_label">
+            {% for k, n in pest_names|dictsort(by='value') %}<option value="{{ k }}" {{ 'selected' if k == (scan.verified_label or scan.label) }}>{{ n }}</option>{% endfor %}
+            <option value="other" {{ 'selected' if scan.verified_label == 'other' }}>Something else / not in the list</option>
+          </select></div>
+        <button class="btn btn-sm btn-outline" style="margin-top:.75rem">Save label</button>
+      </form>
+    </div>
+  </div>
+
+  {% if recognised %}
+  <div class="grid grid-2">
+    <div class="card list"><h3>About this {{ 'condition' if cat != 'pest' else 'organism' }}</h3><p>{{ pest.description }}</p>
+      {% if pest.identification %}<h4>How to recognise it</h4><ul>{% for i in pest.identification %}<li>{{ i }}</li>{% endfor %}</ul>{% endif %}
+      {% if pest.lifecycle and pest.lifecycle != '-' %}<h4>{{ 'Lifecycle' if cat == 'pest' else 'How it spreads' }}</h4><p style="margin:0">{{ pest.lifecycle }}</p>{% endif %}</div>
+    <div class="card list"><h3>Symptoms on the crop</h3><ul>{% for s in pest.symptoms %}<li>{{ s }}</li>{% endfor %}</ul></div>
+  </div>
+
+  <div class="card">
+    <h3>{{ 'What to do (integrated management)' if cat != 'healthy' else 'Keep your crop healthy' }}</h3>
+    <div class="grid grid-3 mgmt">
+      <div><h4>{{ icon('sprout', 20) }} Cultural</h4><ul>{% for m in pest.management.cultural %}<li>{{ m }}</li>{% endfor %}</ul></div>
+      <div><h4>{{ icon('leaf', 20) }} Biological</h4><ul>{% for m in pest.management.biological %}<li>{{ m }}</li>{% endfor %}</ul></div>
+      <div><h4>{{ icon('flask', 20) }} Chemical (last resort)</h4><ul>{% for m in pest.management.chemical %}<li>{{ m }}</li>{% endfor %}</ul></div>
+    </div>
+    <p class="small muted" style="margin-bottom:0">Always read product labels, wear protective equipment, and confirm with your MoFA extension officer before spraying.</p>
+  </div>
+
+  {% if recommended %}
+  <div><h2>Supplies that help</h2><div class="grid grid-4">{% for p in recommended %}{{ product_card(p) }}{% endfor %}</div></div>
+  {% endif %}
+  {% endif %}
+
+  <div class="controls">
+    <a class="btn" href="{{ url_for('scan') }}">{{ icon('camera', 18) }} Scan another</a>
+    {% if recognised %}<a class="btn btn-outline" href="{{ url_for('pest_detail', slug=slug) }}">Full profile</a>{% endif %}
+    <a class="btn btn-ghost" href="{{ url_for('history') }}">View history</a>
+  </div>
+</div>
+{% endblock %}
